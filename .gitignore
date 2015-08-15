@@ -1,0 +1,6 @@
+Debug/
+Release/
+x64/
+ConsoleApplication1.vcxproj
+ConsoleApplication1.vcxproj.filters
+*.dll
