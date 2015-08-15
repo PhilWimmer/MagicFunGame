@@ -5,3 +5,4 @@ ConsoleApplication1.vcxproj
 ConsoleApplication1.vcxproj.filters
 *.dll
 makefile
+app
