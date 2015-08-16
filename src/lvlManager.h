@@ -10,7 +10,7 @@ public:
 	lvlManager();
 	~lvlManager();
 	std::string lvlManager::buildKey();
-	Tile** lvlManager::genMap(std::unordered_map<std::string, sf::Texture*>);
+	void lvlManager::genMap(std::unordered_map<std::string, sf::Texture*>);
 	sf::Sprite lvlManager::genDrawable();
 
 };

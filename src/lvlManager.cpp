@@ -11,10 +11,10 @@ lvlManager::~lvlManager()
 }
 
 std::string lvlManager::buildKey(){
-	
+	return "";
 }
 
-Tile** lvlManager::genMap(std::unordered_map<std::string, sf::Texture*> textures){
+void lvlManager::genMap(std::unordered_map<std::string, sf::Texture*> textures){
 	for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
 			sf::Texture* tex = textures.at(lvlManager::buildKey());
@@ -37,4 +37,5 @@ sf::Sprite lvlManager::genDrawable(){
 	}
 	sf::Texture tex = texture.getTexture();
 	sf::Sprite outputSprite = *(new sf::Sprite(tex));
+	return outputSprite;
 }
