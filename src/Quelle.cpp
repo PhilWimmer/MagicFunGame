@@ -5,7 +5,34 @@
 #include "textureManager.h"
 #include "UIManager.h"
 
+#include <thread>         
+#include <chrono>
 
+void testTextureManager(sf::RenderWindow*);
+
+void testTextureManager(sf::RenderWindow* window_ptr) {
+
+	TextureManager tex;
+	tex.getFiles();
+	tex.createTextures();
+
+	sf::Texture texture;
+	sf::Sprite* sprite = (new sf::Sprite(texture));
+
+	for(std::vector<std::string>::iterator it = tex.fileNames.begin(); it != tex.fileNames.end(); ++it) {
+    	std::string name = *it;
+
+    	int dotPos = name.find_last_of('.');
+    	name.erase(dotPos, name.length() - dotPos);
+    	std::cout << name << std::endl;
+
+    	sprite = (new sf::Sprite(tex.textureTable.at(name)));
+    	window_ptr->clear();
+    	window_ptr->draw(*sprite);
+    	window_ptr->display();
+    	std::this_thread::sleep_for (std::chrono::seconds(2));
+    }
+} 
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Test");
@@ -23,8 +50,7 @@ int main() {
 	//UIManager uimanager;
 	//uimanager.setTerrain(sprite);
 
-	TextureManager tex;
-	tex.getFiles();
+	testTextureManager(&window); 
 
 	while (window.isOpen())
 	{

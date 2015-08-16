@@ -10,5 +10,5 @@ public:
 	~TextureManager();
 	void createTextures();
 	std::vector<std::string> fileNames;
-	std::unordered_map<std::string, sf::Texture*> textureTable;
+	std::unordered_map<std::string, sf::Texture> textureTable;
 };

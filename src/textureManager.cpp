@@ -8,7 +8,7 @@
 
 TextureManager::TextureManager() {
 	fileNames = std::vector<std::string>();
-	textureTable = std::unordered_map<std::string, sf::Texture*>();
+	textureTable = std::unordered_map<std::string, sf::Texture>();
 }
 
 TextureManager::~TextureManager() {
@@ -16,7 +16,18 @@ TextureManager::~TextureManager() {
 }
 
 void TextureManager::createTextures() {
-	
+	sf::Texture texture;
+
+	for(std::vector<std::string>::iterator it = fileNames.begin(); it != fileNames.end(); ++it) {
+    	std::string name = *it;
+		texture.loadFromFile("Sprites/" + name);
+		std::cout << "Sprites/" << name << std::endl;
+
+    	int dotPos = name.find_last_of('.');
+    	name.erase(dotPos, name.length() - dotPos);
+
+    	textureTable.emplace(name, texture);
+	}
 }
 
 void TextureManager::getFiles() {
@@ -25,8 +36,9 @@ void TextureManager::getFiles() {
 	curDir = opendir("Sprites/"); 
 	  if (curDir) {
 	    while ((dirEntry = readdir(curDir))) {
-	        fileNames.push_back(dirEntry->d_name);
-	        std::cout << fileNames.back() << std::endl;
+	    	std::string name(dirEntry->d_name);
+	        if (name[0] != '.')
+	        	fileNames.push_back(name);
 	    }
 		closedir(curDir);
 	}
