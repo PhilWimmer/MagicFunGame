@@ -16,7 +16,13 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
+		sf::Texture texture;
+		texture.loadFromFile("Sprites\\PlayerChar.png");
+		texture.setSmooth(true);
+		sf::Sprite* sprite = (new sf::Sprite(texture));
+		(*sprite).setColor(sf::Color(128, 128, 128));
+		//sprite.setTexture(texture);
+		window.draw(*sprite);
 		window.display();
 	}
 
