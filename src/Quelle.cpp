@@ -2,6 +2,7 @@
 #include "tile.h"
 #include <iostream>
 #include "Unit.h"
+#include "UIManager.h"
 
 
 int main() {
@@ -17,6 +18,8 @@ int main() {
 
 	Unit test_unit(10, 10, *sprite);
 	Tile test(sprite, &test_unit);
+	//UIManager uimanager;
+	//uimanager.setTerrain(sprite);
 
 	while (window.isOpen())
 	{
@@ -29,6 +32,7 @@ int main() {
 
 		
 		window.clear();
+		//window.draw(uimanager.getUI);
 		window.draw(*test.sprite);
 		//window.draw(*sprite);
 		/*sf::Texture texture;
