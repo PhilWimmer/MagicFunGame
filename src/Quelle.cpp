@@ -52,7 +52,7 @@ int main() {
 
 	int mousex=0, mousey=0;
 
-	testTextureManager(&window); 
+	//testTextureManager(&window); 
 
 	while (window.isOpen())
 	{
