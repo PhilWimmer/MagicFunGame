@@ -2,7 +2,9 @@
 #include "tile.h"
 #include <iostream>
 #include "Unit.h"
+#include "textureManager.h"
 #include "UIManager.h"
+
 
 
 int main() {
@@ -22,6 +24,9 @@ int main() {
 	uimanager.setTerrain(sprite);
 
 	int mousex=0, mousey=0;
+
+	TextureManager tex;
+	tex.getFiles();
 
 	while (window.isOpen())
 	{
