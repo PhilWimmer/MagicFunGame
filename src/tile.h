@@ -3,6 +3,7 @@
 
 class Tile {
 public:
+	Tile();
 	Tile(sf::Sprite*, Unit*);
 	~Tile();
 	sf::Sprite* sprite;
