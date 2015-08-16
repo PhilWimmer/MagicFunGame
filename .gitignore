@@ -7,3 +7,5 @@ ConsoleApplication1.vcxproj.user
 *.dll
 makefile
 app
+src/app
+src/Sprites
