@@ -4,9 +4,9 @@
 class Tile {
 public:
 	Tile();
-	Tile(sf::Sprite*, Unit*);
+	Tile(sf::Sprite, Unit*);
 	~Tile();
-	sf::Sprite* sprite;
+	sf::Sprite sprite;
 private:
 	Unit* pawn = NULL;
 };

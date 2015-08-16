@@ -36,21 +36,35 @@ void testTextureManager(sf::RenderWindow* window_ptr) {
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Test");
-	sf::CircleShape shape(100.f); 
-	shape.setFillColor(sf::Color::Green);
+	/*sf::CircleShape shape(100.f); 
+	shape.setFillColor(sf::Color::Green);*/
 
-	sf::Texture texture;
+	/*sf::Texture texture;
 	texture.loadFromFile("Sprites/Scene10x10.png");
 	texture.setSmooth(true);
-	sf::Sprite* sprite = (new sf::Sprite(texture));
+	sf::Sprite* sprite = (new sf::Sprite(texture));*/
 	//(*sprite).setColor(sf::Color(128, 128, 128));
 
-	Unit test_unit(10, 10, *sprite);
-	Tile test(sprite, &test_unit);
+	//testlvlManager
+
+	TextureManager texMng;
+	texMng.getFiles();
+	texMng.createTextures();
+
+	lvlManager lvl = lvlManager();
+	lvl.genMap(&texMng);
+
+	//Unit test_unit(10, 10, *sprite);
+	//Tile test(sprite, &test_unit);
+	sf::Sprite output;
+	lvl.genDrawable(&output);
 	UIManager uimanager;
-	uimanager.setTerrain(sprite);
+	uimanager.setTerrain(output);
+	//uimanager.setTerrain(lvl.genDrawable());
 
 	int mousex=0, mousey=0;
+
+
 
 	//testTextureManager(&window); 
 
@@ -100,9 +114,9 @@ int main() {
 
 		
 		window.clear();
-		window.draw(*uimanager.getUI());
-		//window.draw(*test.sprite);
+		window.draw(*(uimanager.getUI()));
 		//window.draw(*sprite);
+		//window.draw(output);
 		/*sf::Texture texture;
 		texture.loadFromFile("Sprites\\PlayerChar.png");
 		texture.setSmooth(true);

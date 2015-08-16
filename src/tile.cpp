@@ -1,11 +1,11 @@
 #include "tile.h"
 
 Tile::Tile(){
-	sprite = NULL;
+	sprite = sf::Sprite();
 	pawn = NULL;
 }
 
-Tile::Tile(sf::Sprite* s, Unit* p) {
+Tile::Tile(sf::Sprite s, Unit* p) {
 
 	sprite = s;
 	pawn = p;
