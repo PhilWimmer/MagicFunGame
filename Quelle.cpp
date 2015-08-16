@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+#include <SFML\Graphics.hpp>
 #include "tile.h"
 #include <iostream>
 #include "Unit.h"
@@ -9,7 +9,7 @@ int main() {
 	shape.setFillColor(sf::Color::Green);
 
 	sf::Texture texture;
-	texture.loadFromFile("Sprites\\PlayerChar.png");
+	texture.loadFromFile("Sprites/PlayerChar.png");
 	texture.setSmooth(true);
 	sf::Sprite* sprite = (new sf::Sprite(texture));
 	//(*sprite).setColor(sf::Color(128, 128, 128));
