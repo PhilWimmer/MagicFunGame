@@ -2,6 +2,7 @@
 #include "tile.h"
 #include <iostream>
 #include "Unit.h"
+#include "textureManager.h"
 
 
 int main() {
@@ -18,6 +19,9 @@ int main() {
 	Unit test_unit(10, 10, *sprite);
 	Tile test(sprite, &test_unit);
 
+	TextureManager tex;
+	tex.getFiles();
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -26,7 +30,6 @@ int main() {
 			if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				window.close();
 		}
-
 		
 		window.clear();
 		window.draw(*test.sprite);
