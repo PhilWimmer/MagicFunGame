@@ -22,7 +22,7 @@ public:
 	}
 
 
-	//Unit::~Unit()
-	//{
-	//}
+	Unit::~Unit()
+	{
+	}
 
