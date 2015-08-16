@@ -1,23 +1,33 @@
 #include "TextureManager.h"
 #include <sys/types.h>
 #include <dirent.h>
+#include <vector>
+#include <iostream>
+#include <unordered_map>
+#include <SFML/Graphics.hpp>
 
 TextureManager::TextureManager() {
-
+	fileNames = std::vector<std::string>();
+	textureTable = std::unordered_map<std::string, sf::Texture*>();
 }
 
 TextureManager::~TextureManager() {
 
 }
 
+void TextureManager::createTextures() {
+	
+}
+
 void TextureManager::getFiles() {
-	DIR *dirHandle;
+	DIR *curDir;
 	struct dirent * dirEntry;
-	dirHandle = opendir("."); 
-	  if (dirHandle) {
-	    while (0 != (dirEntry = readdir(dirHandle))) {
-	        puts(dirEntry->d_name);
+	curDir = opendir("Sprites/"); 
+	  if (curDir) {
+	    while ((dirEntry = readdir(curDir))) {
+	        fileNames.push_back(dirEntry->d_name);
+	        std::cout << fileNames.back() << std::endl;
 	    }
-		closedir(dirHandle);
+		closedir(curDir);
 	}
 }
