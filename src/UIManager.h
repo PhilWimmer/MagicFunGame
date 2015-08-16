@@ -5,6 +5,7 @@ class UIManager
 public:
 	sf::Sprite* terrain = NULL;
 	float x, y;
+	float scale;
 	UIManager();
 	~UIManager();
 	void setTerrain(sf::Sprite*);
