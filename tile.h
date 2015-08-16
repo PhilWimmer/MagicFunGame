@@ -1,4 +1,4 @@
-#include "unit.h"
+#include "Unit.h"
 #include <iostream>
 
 class Tile {
@@ -10,12 +10,3 @@ private:
 	Unit* pawn = NULL;
 };
 
-Tile::Tile(sf::Sprite* s, Unit* p) {
-
-	sprite = s;
-	pawn = p;
-}
-
-Tile::~Tile() {
-
-}

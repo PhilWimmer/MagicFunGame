@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "tile.h"
 #include <iostream>
-#include "Unit.cpp"
+#include "Unit.h"
 
 
 int main() {

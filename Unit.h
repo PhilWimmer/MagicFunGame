@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <Unit.cpp>
 
 class Unit
 {
