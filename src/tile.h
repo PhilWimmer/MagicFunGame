@@ -1,5 +1,4 @@
 #include "Unit.h"
-#include <iostream>
 
 class Tile {
 public:
