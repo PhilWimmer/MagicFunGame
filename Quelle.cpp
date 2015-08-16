@@ -1,11 +1,12 @@
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "tile.h"
 #include <iostream>
-#include "Unit.h"
+#include "Unit.cpp"
+
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Test");
-	sf::CircleShape shape(100.f);
+	sf::CircleShape shape(100.f); 
 	shape.setFillColor(sf::Color::Green);
 
 	sf::Texture texture;
