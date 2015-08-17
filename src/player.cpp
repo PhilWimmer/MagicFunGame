@@ -21,7 +21,6 @@ bool Player::move(int newX, int newY, lvlManager* lvl) {
 	y = newY;
 
 	lvl->map[y][x].pawn = playerUnit;
-
 	//std::cout << x << std::endl;
 	return false;
 }

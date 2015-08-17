@@ -71,7 +71,6 @@ int main() {
 	UIManager uimanager;
 	uimanager.setTerrain(output);
 	//uimanager.setTerrain(lvl.genDrawable());
-
 	int mousex=0, mousey=0;
 
 	//lvl.testTileGen(&texMng, &window);
