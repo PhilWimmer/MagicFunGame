@@ -108,13 +108,13 @@ int main() {
 			uimanager.x += 1;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			uimanager.x -= 1;
-		if (sf::Mouse::getPosition().x < 20)
+		if (sf::Mouse::getPosition(window).x < 20)
 			uimanager.x -= 1;
-		if (sf::Mouse::getPosition().x > 1900)
+		if (sf::Mouse::getPosition(window).x > 1900)
 			uimanager.x += 1;
-		if (sf::Mouse::getPosition().y < 20)
+		if (sf::Mouse::getPosition(window).y < 20)
 			uimanager.y -= 1;
-		if (sf::Mouse::getPosition().y > 1060)
+		if (sf::Mouse::getPosition(window).y > 1060)
 			uimanager.y += 1;
 
 		
