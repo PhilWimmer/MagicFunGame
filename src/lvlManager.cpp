@@ -161,7 +161,7 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 	return ret;
 }
 
-void lvlManager::drawChars(sf::Sprite* output){
+void lvlManager::drawUnits(sf::Sprite* output){
 	sf::RenderTexture texture;
 	texture.create(3840, 3840);
 	for (int i = 0; i < 30; i++){
@@ -175,7 +175,7 @@ void lvlManager::drawChars(sf::Sprite* output){
 			}
 		}
 	}
-	tex = texture.getTexture();
-	(*output).setTexture(tex);
+	UnitTex = texture.getTexture();
+	(*output).setTexture(UnitTex);
 }
 

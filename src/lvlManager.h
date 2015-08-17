@@ -15,6 +15,7 @@ public:
 	Tile map[30][30];
 	sf::Sprite output;
 	sf::Texture tex;
+	sf::Texture UnitTex;
 	lvlManager();
 	~lvlManager();
 	void genMap(Block, int, int);
@@ -24,7 +25,7 @@ public:
 	void testTileGen(TextureManager*, sf::RenderWindow*);
 	std::string buildKey(TextureManager*);
 	sf::Vector2<int> findNextSpot(int, int);
-	void drawChars(sf::Sprite*);
+	void drawUnits(sf::Sprite*);
 
 };
 
