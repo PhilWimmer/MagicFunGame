@@ -13,6 +13,7 @@ public:
 	~UIManager();
 	void setTerrain(sf::Sprite);
 	void setUnits(sf::Sprite t);
+	sf::Sprite* getUnits();
 	sf::Sprite* getUI();
 };
 

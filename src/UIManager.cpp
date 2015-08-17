@@ -25,22 +25,32 @@ void UIManager::setUnits(sf::Sprite t)
 
 sf::Sprite* UIManager::getUI()
 {
-	/*terrain.setPosition(x, y);
-	units.setPosition(x, y);
+	terrain.setPosition(x, y);
+	//units.setPosition(x, y);
 	terrain.setScale(scale, -scale);
-	units.setScale(scale, -scale);*/
-	sf::RenderTexture texture;
-	texture.create(terrain.getLocalBounds().width, terrain.getLocalBounds().height);
-	texture.draw(terrain);
+	//units.setScale(scale, -scale);
+	terrain.setOrigin(0, terrain.getLocalBounds().height);
+	//sf::RenderTexture texture;
+	//texture.create(3840, 3840);
+	//texture.draw(terrain);
+	
 	//texture.draw(units);
-	outtexture = texture.getTexture();
-	outsprite.setTexture(outtexture);
-	outsprite.setPosition(x, y);
-	outsprite.setScale(scale, -scale);
-	outsprite.setOrigin(0, outsprite.getLocalBounds().height);
-	return &outsprite;
+	//outtexture = texture.getTexture();
+	//outsprite.setTexture(outtexture);
+	//outsprite.setPosition(x, y);
+	//outsprite.setScale(scale, -scale);
+	
+	//return &outsprite;
+	return &terrain;
 }
 
+sf::Sprite* UIManager::getUnits()
+{
+	units.setPosition(x, y);
+	units.setScale(scale, -scale);
+	units.setOrigin(0, units.getLocalBounds().height);
+	return &units;
+}
 
 UIManager::~UIManager()
 {

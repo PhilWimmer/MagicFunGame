@@ -125,9 +125,10 @@ int main() {
 
 		
 		window.clear();
-		lvl.drawChars(&output);
+		//lvl.drawUnits(&output);
 		uimanager.setUnits(output);
 		window.draw(*(uimanager.getUI()));
+		window.draw(*(uimanager.getUnits()));
 		//window.draw(*sprite);
 		//window.draw(output);
 		/*sf::Texture texture;
