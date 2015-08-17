@@ -19,7 +19,7 @@ void testTextureManager(sf::RenderWindow* window_ptr) {
 	sf::Texture texture;
 	sf::Sprite* sprite = (new sf::Sprite(texture));
 
-	for(std::vector<std::string>::iterator it = tex.fileNames.begin(); it != tex.fileNames.end(); ++it) {
+	for(std::vector<std::string>::iterator it = tex.units.begin(); it != tex.units.end(); ++it) {
     	std::string name = *it;
 
     	int dotPos = name.find_last_of('.');

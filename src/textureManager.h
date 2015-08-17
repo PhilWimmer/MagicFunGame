@@ -11,6 +11,8 @@ public:
 	~TextureManager();
 	void createTextures();
 	bool hasLoaded;
-	std::vector<std::string> fileNames;
+	std::vector<std::string> units;
+	std::vector<std::string> floors;
+	std::vector<std::string> walls;
 	std::unordered_map<std::string, sf::Texture> textureTable;
 };

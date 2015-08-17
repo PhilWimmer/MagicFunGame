@@ -14,9 +14,9 @@ lvlManager::~lvlManager()
 
 std::string lvlManager::buildKey(TextureManager* texMng){
 	std::string key;
-	int length = texMng->fileNames.size();
+	int length = texMng->floors.size();
 	int pick = rand() % length;
-	key = texMng->fileNames[pick];
+	key = texMng->floors[pick];
 	int dotPos = key.find_last_of('.');
 	key.erase(dotPos, key.length() - dotPos);
 	std::cout << key << std::endl;
@@ -85,6 +85,8 @@ Block lvlManager::generateTiles(std::string name, TextureManager* texMng) {
 	int y = 0;
 	
 	int first_ = name.find('_');
+	std::cout << name.substr(first_ + 1, 1) << std::endl;
+	std::cout << name.substr(first_ + 3, 1) << std::endl;
 	x = std::stoi(name.substr(first_ + 1, 1)); // This is going to crash and burn if blocks are ever 
 	y = std::stoi(name.substr(first_ + 3, 1)); // larger than 9
 	

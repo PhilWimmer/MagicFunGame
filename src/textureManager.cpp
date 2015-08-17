@@ -7,7 +7,9 @@
 #include <SFML/Graphics.hpp>
 
 TextureManager::TextureManager() {
-	fileNames = std::vector<std::string>();
+	walls = std::vector<std::string>();
+	floors = walls = std::vector<std::string>();
+	units = walls = std::vector<std::string>();
 	textureTable = std::unordered_map<std::string, sf::Texture>();
 	hasLoaded = false;
 }
@@ -19,10 +21,21 @@ TextureManager::~TextureManager() {
 void TextureManager::createTextures() {
 	sf::Texture texture;
 
-	for(std::vector<std::string>::iterator it = fileNames.begin(); it != fileNames.end(); ++it) {
+	for(std::vector<std::string>::iterator it = units.begin(); it != units.end(); ++it) {
     	std::string name = *it;
-		texture.loadFromFile("Sprites/" + name);
-		std::cout << "Sprites/" << name << std::endl;
+		texture.loadFromFile("Sprites/Units/" + name);
+		std::cout << "Sprites/Units/" << name << std::endl;
+
+    	int dotPos = name.find_last_of('.');
+    	name.erase(dotPos, name.length() - dotPos);
+
+    	textureTable.emplace(name, texture);
+	}
+
+	for(std::vector<std::string>::iterator it = walls.begin(); it != walls.end(); ++it) {
+    	std::string name = *it;
+		texture.loadFromFile("Sprites/Walls/" + name);
+		std::cout << "Sprites/Walls/" << name << std::endl;
 
     	int dotPos = name.find_last_of('.');
     	name.erase(dotPos, name.length() - dotPos);
@@ -30,17 +43,48 @@ void TextureManager::createTextures() {
     	textureTable.emplace(name, texture);
 	}
 	hasLoaded = true;
+
+	for(std::vector<std::string>::iterator it = floors.begin(); it != floors.end(); ++it) {
+    	std::string name = *it;
+		texture.loadFromFile("Sprites/Floors/" + name);
+		std::cout << "Sprites/Floors/" << name << std::endl;
+
+    	int dotPos = name.find_last_of('.');
+    	name.erase(dotPos, name.length() - dotPos);
+
+    	textureTable.emplace(name, texture);
+	}
 }
 
 void TextureManager::getFiles() {
 	DIR *curDir;
 	struct dirent * dirEntry;
-	curDir = opendir("Sprites/"); 
+	curDir = opendir("Sprites/Units"); 
 	  if (curDir) {
 	    while ((dirEntry = readdir(curDir))) {
 	    	std::string name(dirEntry->d_name);
 	        if (name[0] != '.')
-	        	fileNames.push_back(name);
+	        	units.push_back(name);
+	    }
+		closedir(curDir);
+	}
+
+	curDir = opendir("Sprites/Walls"); 
+	  if (curDir) {
+	    while ((dirEntry = readdir(curDir))) {
+	    	std::string name(dirEntry->d_name);
+	        if (name[0] != '.')
+	        	walls.push_back(name);
+	    }
+		closedir(curDir);
+	}
+
+	curDir = opendir("Sprites/Floors"); 
+	  if (curDir) {
+	    while ((dirEntry = readdir(curDir))) {
+	    	std::string name(dirEntry->d_name);
+	        if (name[0] != '.')
+	        	floors.push_back(name);
 	    }
 		closedir(curDir);
 	}

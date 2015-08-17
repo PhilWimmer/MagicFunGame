@@ -19,7 +19,7 @@ public:
 	~lvlManager();
 	void genMap(Block);
 	void genDrawable(sf::Sprite*);
-	bool lvlManager::isAccessible(int, int);
+	bool isAccessible(int, int);
 	Block generateTiles(std::string, TextureManager*);
 	void testTileGen(TextureManager*, sf::RenderWindow*);
 	std::string buildKey(TextureManager*);
