@@ -16,6 +16,7 @@ public:
 	sf::Sprite output;
 	sf::Texture tex;
 	sf::Texture unitTex;
+	sf::Sprite unitRenderSprite;
 	sf::RenderTexture unitRenderTex;
 	lvlManager();
 	~lvlManager();

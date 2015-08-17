@@ -169,8 +169,8 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 }
 
 void lvlManager::drawUnits(sf::Sprite* output){
-	unitRenderTex.clear();
-	for (int i = 0; i < 30; i++){
+	unitRenderTex.clear(sf::Color(0, 0, 0, 0));
+	/*for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
 			//CharTexture prüfen/renderen
 			if (map[i][j].pawn != NULL){
@@ -180,7 +180,11 @@ void lvlManager::drawUnits(sf::Sprite* output){
 				unitRenderTex.draw(renderSprite);
 			}
 		}
-	}
+	}*/
+	//sf::Sprite renderSprite = sf::Sprite();
+	unitRenderSprite.setPosition(0, 0);
+	unitRenderSprite.setTexture(*(map[0][0].pawn->sprite.getTexture()));
+	unitRenderTex.draw(unitRenderSprite);
 	unitTex = unitRenderTex.getTexture();
 	(*output).setTexture(unitTex);
 }
