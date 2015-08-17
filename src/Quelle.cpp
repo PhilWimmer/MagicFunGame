@@ -77,8 +77,8 @@ int main() {
 				window.close();
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				mousex = sf::Mouse::getPosition().x;
-				mousey = sf::Mouse::getPosition().y;
+				mousex = sf::Mouse::getPosition(window).x;
+				mousey = sf::Mouse::getPosition(window).y;
 
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && event.type == sf::Event::MouseMoved)
@@ -87,6 +87,11 @@ int main() {
 				uimanager.y += event.mouseMove.y-mousey;
 				mousex = event.mouseMove.x;
 				mousey = event.mouseMove.y;
+			}
+			if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Button::Right)
+			{
+				std::cout << "clicked at " << sf::Mouse::getPosition(window).x-uimanager.x << " " << sf::Mouse::getPosition(window).y-uimanager.y << std::endl;
+
 			}
 			/* Zooming - Experimental
 			if (event.type == sf::Event::MouseWheelScrolled)
