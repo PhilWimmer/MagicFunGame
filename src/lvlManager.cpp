@@ -60,3 +60,6 @@ void lvlManager::genDrawable(sf::Sprite* output){
 	std::cout << (*output).getScale().y << std::endl;*/
 	//return &output;
 }
+
+
+//TODO Tile Splitting Function

@@ -5,9 +5,12 @@ class Tile {
 public:
 	Tile();
 	Tile(sf::Sprite, Unit*, bool);
-	~Tile();
+	~Tile();	
 	sf::Sprite sprite;
 	bool accessible;
 	Unit* pawn = NULL;
+	int x = NULL;
+	int y = NULL;
+	bool notePosition(int, int);
 };
 
