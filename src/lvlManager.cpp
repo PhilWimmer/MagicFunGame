@@ -56,7 +56,7 @@ void lvlManager::genDrawable(sf::Sprite* output){
 
 
 //Only for rectangular blocks now
-std::vector<Tile> lvlManager::generateTiles(std::string name, TextureManager* texMng) {
+Block lvlManager::generateTiles(std::string name, TextureManager* texMng) {
 	std::vector<Tile> tiles;
 	sf::Texture block = texMng->textureTable.at(name);
 
@@ -86,7 +86,8 @@ std::vector<Tile> lvlManager::generateTiles(std::string name, TextureManager* te
 
 	//std::cout << name.substr(first_ + 1, 1) << std::endl; //rtfm you retard
 
-	return tiles;
+	Block b = {tiles, x, y};
+	return  b;
 }
 
 void lvlManager::testTileGen(TextureManager* texMng, sf::RenderWindow* window_ptr) {
@@ -94,7 +95,9 @@ void lvlManager::testTileGen(TextureManager* texMng, sf::RenderWindow* window_pt
 		std::cout << "textures not loaded" << std::endl;
 		return;
 	}
-	std::vector<Tile> tiles = generateTiles("test_2_4", texMng);
+
+	Block b = generateTiles("test_1_3", texMng);
+	std::vector<Tile> tiles = b.tiles;
 	for(std::vector<Tile>::iterator it = tiles.begin(); it != tiles.end(); ++it) {
     	it->sprite.getTextureRect();
     	window_ptr->clear();
