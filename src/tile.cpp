@@ -5,8 +5,8 @@ Tile::Tile(){
 	pawn = NULL;
 }
 
-Tile::Tile(sf::Sprite s, Unit* p) {
-
+Tile::Tile(sf::Sprite s, Unit* p, bool b) {
+	accessible = b;
 	sprite = s;
 	pawn = p;
 }
