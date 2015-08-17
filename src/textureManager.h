@@ -10,6 +10,7 @@ public:
 	TextureManager();
 	~TextureManager();
 	void createTextures();
+	bool hasLoaded;
 	std::vector<std::string> fileNames;
 	std::unordered_map<std::string, sf::Texture> textureTable;
 };
