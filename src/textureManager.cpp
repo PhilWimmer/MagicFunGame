@@ -24,10 +24,12 @@ void TextureManager::createTextures() {
 	for(std::vector<std::string>::iterator it = units.begin(); it != units.end(); ++it) {
     	std::string name = *it;
 		texture.loadFromFile("Sprites/Units/" + name);
-		std::cout << "Sprites/Units/" << name << std::endl;
+		//std::cout << "Sprites/Units/" << name << std::endl;
 
     	int dotPos = name.find_last_of('.');
     	name.erase(dotPos, name.length() - dotPos);
+
+    	std::cout << "LOADING: " << name << std::endl;
 
     	textureTable.emplace(name, texture);
 	}
@@ -35,10 +37,12 @@ void TextureManager::createTextures() {
 	for(std::vector<std::string>::iterator it = walls.begin(); it != walls.end(); ++it) {
     	std::string name = *it;
 		texture.loadFromFile("Sprites/Walls/" + name);
-		std::cout << "Sprites/Walls/" << name << std::endl;
+		//std::cout << "Sprites/Walls/" << name << std::endl;
 
     	int dotPos = name.find_last_of('.');
     	name.erase(dotPos, name.length() - dotPos);
+
+    	std::cout << "LOADING: " << name << std::endl;
 
     	textureTable.emplace(name, texture);
 	}
@@ -47,10 +51,12 @@ void TextureManager::createTextures() {
 	for(std::vector<std::string>::iterator it = floors.begin(); it != floors.end(); ++it) {
     	std::string name = *it;
 		texture.loadFromFile("Sprites/Floors/" + name);
-		std::cout << "Sprites/Floors/" << name << std::endl;
+		//std::cout << "Sprites/Floors/" << name << std::endl;
 
     	int dotPos = name.find_last_of('.');
     	name.erase(dotPos, name.length() - dotPos);
+
+    	std::cout << "LOADING: " << name << std::endl;
 
     	textureTable.emplace(name, texture);
 	}
