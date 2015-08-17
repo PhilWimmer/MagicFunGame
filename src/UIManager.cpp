@@ -54,10 +54,9 @@ void UIManager::drawEverything(sf::RenderWindow* window)
 
 void UIManager::drawUnits(sf::RenderWindow* window)
 {
-	for each (DrawableUnit du in units)
-	{
-		sf::Sprite s = *du.sprite;
-		s.setPosition((du.x * 128)+x, (du.y * 128)+y);
+	for (std::vector<DrawableUnit>::iterator it = units.begin(); it != units.end(); ++it) {
+		sf::Sprite s = *it->sprite;
+		s.setPosition((it->x * 128)+x, (it->y * 128)+y);
 		window->draw(s);
 	}
 }
