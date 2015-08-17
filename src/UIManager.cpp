@@ -50,6 +50,13 @@ sf::Sprite* UIManager::getUnits()
 	units.setScale(scale, -scale);
 	units.setOrigin(0, units.getLocalBounds().height);
 	return &units;
+
+}
+
+void UIManager::drawEverything(sf::RenderWindow* window)
+{
+	window->draw(*getUI());
+	//window->draw(getUnits());
 }
 
 UIManager::~UIManager()

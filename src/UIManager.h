@@ -15,5 +15,6 @@ public:
 	void setUnits(sf::Sprite t);
 	sf::Sprite* getUnits();
 	sf::Sprite* getUI();
+	void drawEverything(sf::RenderWindow*);
 };
 
