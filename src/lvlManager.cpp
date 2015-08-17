@@ -3,6 +3,7 @@
 #include <thread>         
 #include <chrono>
 #include "player.h"
+#include "drawableUnit.h"
 
 lvlManager::lvlManager()
 {
@@ -168,24 +169,21 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 	return ret;
 }
 
-void lvlManager::drawUnits(sf::Sprite* output){
-	unitRenderTex.clear(sf::Color(0, 0, 0, 0));
-	/*for (int i = 0; i < 30; i++){
+std::vector<DrawableUnit> lvlManager::drawUnits(){
+	std::vector<DrawableUnit> units;
+	for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
-			//CharTexture prüfen/renderen
+			//CharTexture prüfen
 			if (map[i][j].pawn != NULL){
-				sf::Sprite renderSprite = sf::Sprite();
+				/*sf::Sprite renderSprite = sf::Sprite();
 				renderSprite.setPosition(i * 128, j * 128);
 				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
-				unitRenderTex.draw(renderSprite);
+				unitRenderTex.draw(renderSprite);*/
+				struct DrawableUnit u = { i, j, &(map[i][j].pawn->sprite) };
+				units.push_back(u);
 			}
 		}
-	}*/
-	//sf::Sprite renderSprite = sf::Sprite();
-	unitRenderSprite.setPosition(0, 0);
-	unitRenderSprite.setTexture(*(map[0][0].pawn->sprite.getTexture()));
-	unitRenderTex.draw(unitRenderSprite);
-	unitTex = unitRenderTex.getTexture();
-	(*output).setTexture(unitTex);
+	}
+	return units;
 }
 

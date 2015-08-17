@@ -4,5 +4,5 @@
 struct DrawableUnit {
 	int x; 
 	int y;
-	sf::Sprite sprite;
-}
+	sf::Sprite* sprite;
+};

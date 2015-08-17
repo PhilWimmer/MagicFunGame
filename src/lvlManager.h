@@ -28,6 +28,6 @@ public:
 	std::string buildKey(TextureManager*);
 	void spawnPlayer(Unit*);
 	sf::Vector2<int> findNextSpot(int, int);
-	void drawUnits(sf::Sprite*);
+	std::vector<DrawableUnit> drawUnits();
 };
 
