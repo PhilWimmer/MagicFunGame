@@ -12,18 +12,27 @@ lvlManager::~lvlManager()
 
 std::string lvlManager::buildKey(TextureManager* texMng){
 	std::string key;
-	key = texMng->fileNames[2];
-	std::cout << key << std::endl;
+	int length = texMng->fileNames.size();
+	int pick = rand() % length;
+	key = texMng->fileNames[pick];
 	int dotPos = key.find_last_of('.');
 	key.erase(dotPos, key.length() - dotPos);
+	std::cout << key << std::endl;
 	return key;
 }
 
-void lvlManager::genMap(TextureManager* texMng){
-	for (int i = 0; i < 30; i++){
+void lvlManager::genMap(std::vector<Tile> tiles){
+	srand(time(NULL));
+	/*for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
 			std::string name = buildKey(texMng);
 			map[i][j].sprite.setTexture(texMng->textureTable.at(name));
+		}
+	}*/
+	int count = 0;
+	for (int j = 0; j <  blockwidth; j++){
+		for (int i = 0; i < blockheight; i++){
+			map[i][j] = tiles[count];
 		}
 	}
 }
@@ -41,6 +50,15 @@ void lvlManager::genDrawable(sf::Sprite* output){
 				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
 				texture.draw(renderSprite);
 			}
+			//Leere Tiles auf inaccessible setzten und blocked textur verwenden
+			if (map[i][j].sprite.getTexture() == NULL){
+				sf::Texture tex = sf::Texture();
+				tex.loadFromFile("Sprites/TileBlocked.png");
+				map[i][j].sprite.setTexture(tex);
+				renderSprite.setTexture(tex);
+				texture.draw(renderSprite);
+				map[i][j].accessible = false;
+			}
 		}
 	}
 	sf::Sprite renderSprite = sf::Sprite();
@@ -50,13 +68,11 @@ void lvlManager::genDrawable(sf::Sprite* output){
 	renderSprite.setPosition(0, 128);
 	texture.draw(renderSprite);
 	tex = texture.getTexture();
-	//output = *(new sf::Sprite(tex));
-	//tex.loadFromFile("Sprites/Scene10x10.png");
 	(*output).setTexture(tex);
-	/*std::cout << (*output).getScale().x << std::endl;
-	std::cout << (*output).getScale().y << std::endl;
-	(*output).scale( 0.5, 2 );
-	std::cout << (*output).getScale().x << std::endl;
-	std::cout << (*output).getScale().y << std::endl;*/
-	//return &output;
+
 }
+
+bool lvlManager::isAccessible(int x, int y){
+	return map[x / 128][y / 128].accessible;
+}
+

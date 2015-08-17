@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include "textureManager.h"
+#include <vector>
 
 class lvlManager
 {
@@ -12,8 +13,9 @@ public:
 	sf::Texture tex;
 	lvlManager();
 	~lvlManager();
-	void genMap(TextureManager*);
+	void genMap(std::vector<Tile>);
 	void genDrawable(sf::Sprite*);
+	bool lvlManager::isAccessible(int, int);
 private:
 	std::string buildKey(TextureManager*);
 
