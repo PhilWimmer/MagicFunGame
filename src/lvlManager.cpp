@@ -12,7 +12,7 @@ lvlManager::~lvlManager()
 
 std::string lvlManager::buildKey(TextureManager* texMng){
 	std::string key;
-	key = texMng->fileNames[1];
+	key = texMng->fileNames[2];
 	std::cout << key << std::endl;
 	int dotPos = key.find_last_of('.');
 	key.erase(dotPos, key.length() - dotPos);
@@ -38,9 +38,20 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			texture.draw(renderSprite);
 		}
 	}
+	sf::Sprite renderSprite = sf::Sprite();
+	sf::Texture testTex = sf::Texture();
+	testTex.loadFromFile("Sprites/EnemyChar.png");
+	renderSprite.setTexture(testTex);
+	renderSprite.setPosition(0, 128);
+	texture.draw(renderSprite);
 	tex = texture.getTexture();
 	//output = *(new sf::Sprite(tex));
 	//tex.loadFromFile("Sprites/Scene10x10.png");
 	(*output).setTexture(tex);
+	/*std::cout << (*output).getScale().x << std::endl;
+	std::cout << (*output).getScale().y << std::endl;
+	(*output).scale( 0.5, 2 );
+	std::cout << (*output).getScale().x << std::endl;
+	std::cout << (*output).getScale().y << std::endl;*/
 	//return &output;
 }
