@@ -92,7 +92,7 @@ int main() {
 			if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Button::Right)
 			{
 				std::cout << "clicked at " << sf::Mouse::getPosition(window).x-uimanager.x << " " << sf::Mouse::getPosition(window).y-uimanager.y << std::endl;
-
+				std::cout << "is accessible: " << lvl.isAccessible(sf::Mouse::getPosition(window).x - uimanager.x, sf::Mouse::getPosition(window).y - uimanager.y) << std::endl;
 			}
 			/* Zooming - Experimental
 			if (event.type == sf::Event::MouseWheelScrolled)
