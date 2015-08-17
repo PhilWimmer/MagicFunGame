@@ -6,6 +6,7 @@
 lvlManager::lvlManager()
 {
 	srand(time(NULL));
+	unitRenderTex.create(3840, 3840);
 }
 
 lvlManager::~lvlManager()
@@ -43,10 +44,10 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			renderSprite.setPosition(i * 128, j * 128);
 			texture.draw(renderSprite);
 			//CharTexture prüfen/renderen
-			if (map[i][j].pawn != NULL){
+			/*if (map[i][j].pawn != NULL){
 				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
 				texture.draw(renderSprite);
-			}
+			}*/
 			//Leere Tiles auf inaccessible setzten und blocked textur verwenden
 			if (map[i][j].sprite.getTexture() == NULL){
 				sf::Texture tex = sf::Texture();
@@ -162,8 +163,7 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 }
 
 void lvlManager::drawUnits(sf::Sprite* output){
-	sf::RenderTexture texture;
-	texture.create(3840, 3840);
+	unitRenderTex.clear();
 	for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
 			//CharTexture prüfen/renderen
@@ -171,11 +171,11 @@ void lvlManager::drawUnits(sf::Sprite* output){
 				sf::Sprite renderSprite = sf::Sprite();
 				renderSprite.setPosition(i * 128, j * 128);
 				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
-				texture.draw(renderSprite);
+				unitRenderTex.draw(renderSprite);
 			}
 		}
 	}
-	UnitTex = texture.getTexture();
-	(*output).setTexture(UnitTex);
+	unitTex = unitRenderTex.getTexture();
+	(*output).setTexture(unitTex);
 }
 

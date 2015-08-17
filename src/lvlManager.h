@@ -15,7 +15,8 @@ public:
 	Tile map[30][30];
 	sf::Sprite output;
 	sf::Texture tex;
-	sf::Texture UnitTex;
+	sf::Texture unitTex;
+	sf::RenderTexture unitRenderTex;
 	lvlManager();
 	~lvlManager();
 	void genMap(Block, int, int);

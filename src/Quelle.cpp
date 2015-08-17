@@ -125,7 +125,7 @@ int main() {
 
 		
 		window.clear();
-		lvl.drawChars(&output);
+		lvl.drawUnits(&output);
 		uimanager.setUnits(output);
 		window.draw(*(uimanager.getUI()));
 		//window.draw(*sprite);
