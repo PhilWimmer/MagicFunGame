@@ -65,7 +65,7 @@ int main() {
 
 	int mousex=0, mousey=0;
 
-	lvl.testTileGen(&texMng, &window);
+	//lvl.testTileGen(&texMng, &window);
 
 	//testTextureManager(&window);
 

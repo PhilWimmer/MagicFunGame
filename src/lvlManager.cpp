@@ -65,10 +65,10 @@ void lvlManager::genDrawable(sf::Sprite* output){
 		}
 	}
 	sf::Sprite renderSprite = sf::Sprite();
-	sf::Texture testTex = sf::Texture();
-	testTex.loadFromFile("Sprites/Units/EnemyChar.png");
-	renderSprite.setTexture(testTex);
-	renderSprite.setPosition(0, 128);
+	//sf::Texture testTex = sf::Texture();
+	//testTex.loadFromFile("Sprites/Units/EnemyChar.png");
+	//renderSprite.setTexture(testTex);
+	//renderSprite.setPosition(0, 128);
 	texture.draw(renderSprite);
 	tex = texture.getTexture();
 	(*output).setTexture(tex);
