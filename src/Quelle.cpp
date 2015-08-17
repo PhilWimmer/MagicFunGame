@@ -101,13 +101,13 @@ int main() {
 		}
 		//UI Movement
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			uimanager.y -= 1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			uimanager.y += 1;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			uimanager.y -= 1;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			uimanager.x -= 1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			uimanager.x += 1;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			uimanager.x -= 1;
 		if (sf::Mouse::getPosition().x < 20)
 			uimanager.x -= 1;
 		if (sf::Mouse::getPosition().x > 1900)
