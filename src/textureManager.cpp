@@ -9,6 +9,7 @@
 TextureManager::TextureManager() {
 	fileNames = std::vector<std::string>();
 	textureTable = std::unordered_map<std::string, sf::Texture>();
+	hasLoaded = false;
 }
 
 TextureManager::~TextureManager() {
@@ -28,6 +29,7 @@ void TextureManager::createTextures() {
 
     	textureTable.emplace(name, texture);
 	}
+	hasLoaded = true;
 }
 
 void TextureManager::getFiles() {

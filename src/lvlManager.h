@@ -17,7 +17,8 @@ public:
 	~lvlManager();
 	void genMap(TextureManager*);
 	void genDrawable(sf::Sprite*);
-	//std::vector<Tile> generateTiles(std::string, );
+	std::vector<Tile> generateTiles(std::string, TextureManager*);
+	void testTileGen(TextureManager*, sf::RenderWindow*);
 private:
 	std::string buildKey(TextureManager*);
 

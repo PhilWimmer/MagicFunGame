@@ -30,7 +30,7 @@ void testTextureManager(sf::RenderWindow* window_ptr) {
     	window_ptr->clear();
     	window_ptr->draw(*sprite);
     	window_ptr->display();
-    	std::this_thread::sleep_for (std::chrono::seconds(2));
+    	std::this_thread::sleep_for (std::chrono::seconds(1));
     }
 } 
 
@@ -64,9 +64,9 @@ int main() {
 
 	int mousex=0, mousey=0;
 
+	lvl.testTileGen(&texMng, &window);
 
-
-	//testTextureManager(&window); 
+	//testTextureManager(&window);
 
 	while (window.isOpen())
 	{
