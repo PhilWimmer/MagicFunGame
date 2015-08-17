@@ -142,11 +142,12 @@ int main() {
 		// uimanager.setTerrain(output);
 		
 		window.clear();
-		sf::Sprite output2;
-		lvl.drawUnits(&output2);
-		uimanager.setUnits(output2);
-		window.draw(*(uimanager.getUI()));
-		window.draw(*(uimanager.getUnits()));
+		//sf::Sprite output2;
+		//lvl.drawUnits(&output);
+		//uimanager.setUnits(output2);
+		//window.draw(*(uimanager.getUI()));
+		//window.draw(*(uimanager.getUnits()));
+		uimanager.drawEverything(&window);
 		//window.draw(*sprite);
 		//window.draw(output);
 		/*sf::Texture texture;
