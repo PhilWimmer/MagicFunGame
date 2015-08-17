@@ -125,8 +125,9 @@ int main() {
 
 		
 		window.clear();
+		sf::Sprite output2;
 		//lvl.drawUnits(&output);
-		uimanager.setUnits(output);
+		uimanager.setUnits(output2);
 		window.draw(*(uimanager.getUI()));
 		window.draw(*(uimanager.getUnits()));
 		//window.draw(*sprite);
