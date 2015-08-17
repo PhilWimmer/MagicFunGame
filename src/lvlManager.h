@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 #include "block.h"
-
+#include "Unit.h"
 
 class lvlManager
 {
@@ -23,6 +23,6 @@ public:
 	Block generateTiles(std::string, TextureManager*);
 	void testTileGen(TextureManager*, sf::RenderWindow*);
 	std::string buildKey(TextureManager*);
-
+	void spawnPlayer(Unit*);
 };
 

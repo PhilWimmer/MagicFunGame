@@ -7,6 +7,7 @@
 #include "UIManager.h"
 #include <thread>         
 #include <chrono>
+#include "Player.h"
 
 void testTextureManager(sf::RenderWindow*);
 
@@ -55,6 +56,9 @@ int main() {
 	Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
 	lvl.genMap(b);
 
+	Player p(&texMng, sf::Sprite());
+	lvl.spawnPlayer(p.playerUnit);
+
 	//Unit test_unit(10, 10, *sprite);
 	//Tile test(sprite, &test_unit);
 	sf::Sprite output;
@@ -68,6 +72,7 @@ int main() {
 	//lvl.testTileGen(&texMng, &window);
 
 	//testTextureManager(&window);
+
 
 	while (window.isOpen())
 	{
@@ -92,7 +97,16 @@ int main() {
 			if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Button::Right)
 			{
 				std::cout << "clicked at " << sf::Mouse::getPosition(window).x-uimanager.x << " " << sf::Mouse::getPosition(window).y-uimanager.y << std::endl;
-				std::cout << "is accessible: " << lvl.isAccessible(sf::Mouse::getPosition(window).x - uimanager.x, sf::Mouse::getPosition(window).y - uimanager.y) << std::endl;
+				//std::cout << "is accessible: " << lvl.isAccessible(sf::Mouse::getPosition(window).x - uimanager.x, sf::Mouse::getPosition(window).y - uimanager.y) << std::endl;
+				int xPos = sf::Mouse::getPosition(window).x - uimanager.x;
+				int yPos = sf::Mouse::getPosition(window).x - uimanager.x;
+				if (lvl.isAccessible(xPos, yPos)) {
+					p.move(xPos/128, yPos/128, &lvl);
+					std::cout << xPos/128 << yPos/128 << std::endl;
+					
+					std::cout << "great success !" << std::endl;
+				} else
+					std::cout << "no" << std::endl;
 			}
 			/* Zooming - Experimental
 			if (event.type == sf::Event::MouseWheelScrolled)
@@ -118,6 +132,9 @@ int main() {
 		if (sf::Mouse::getPosition(window).y > 1060)
 			uimanager.y -= 1;
 
+		// lvl.genDrawable(&output);
+		// UIManager uimanager;
+		// uimanager.setTerrain(output);
 		
 		window.clear();
 		window.draw(*(uimanager.getUI()));

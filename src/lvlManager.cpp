@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>         
 #include <chrono>
+#include "player.h"
 
 lvlManager::lvlManager()
 {
@@ -10,6 +11,11 @@ lvlManager::lvlManager()
 
 lvlManager::~lvlManager()
 {
+}
+
+void lvlManager::spawnPlayer(Unit* player) {
+	map[0][0].pawn = player;
+	//std::cout << player->x << std::endl;
 }
 
 std::string lvlManager::buildKey(TextureManager* texMng){
