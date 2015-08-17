@@ -6,6 +6,7 @@
 #include "Tile.h"
 #include <vector>
 #include <string>
+#include "block.h"
 
 
 class lvlManager
@@ -18,8 +19,12 @@ public:
 	~lvlManager();
 	void genMap(std::vector<Tile>);
 	void genDrawable(sf::Sprite*);
+<<<<<<< HEAD
 	bool lvlManager::isAccessible(int, int);
 	std::vector<Tile> generateTiles(std::string, TextureManager*);
+=======
+	Block generateTiles(std::string, TextureManager*);
+>>>>>>> a8c1b65b19b37184793d69bdd12fa43e92c9017e
 	void testTileGen(TextureManager*, sf::RenderWindow*);
 private:
 	std::string buildKey(TextureManager*);
