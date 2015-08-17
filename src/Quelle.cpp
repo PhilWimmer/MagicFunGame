@@ -52,7 +52,7 @@ int main() {
 	texMng.getFiles();
 	texMng.createTextures();
 
-	lvlManager lvl = lvlManager();
+	lvlManager lvl;
 	Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
 	lvl.genMap(b, 0, 0);
 	for (int i = 0; i < 10; i++){
