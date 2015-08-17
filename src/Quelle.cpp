@@ -103,7 +103,7 @@ int main() {
 				std::cout << "clicked at " << sf::Mouse::getPosition(window).x-uimanager.x << " " << sf::Mouse::getPosition(window).y-uimanager.y << std::endl;
 				//std::cout << "is accessible: " << lvl.isAccessible(sf::Mouse::getPosition(window).x - uimanager.x, sf::Mouse::getPosition(window).y - uimanager.y) << std::endl;
 				int xPos = sf::Mouse::getPosition(window).x - uimanager.x;
-				int yPos = sf::Mouse::getPosition(window).x - uimanager.x;
+				int yPos = sf::Mouse::getPosition(window).y - uimanager.y;
 				std::cout << lvl.map[xPos / 128][yPos / 128].pawn << std::endl;
 				if (lvl.isAccessible(xPos, yPos)) {
 					p.move(xPos/128, yPos/128, &lvl);
@@ -147,6 +147,7 @@ int main() {
 		//uimanager.setUnits(output2);
 		//window.draw(*(uimanager.getUI()));
 		//window.draw(*(uimanager.getUnits()));
+		uimanager.setUnits(lvl.drawUnits());
 		uimanager.drawEverything(&window);
 		//window.draw(*sprite);
 		//window.draw(output);

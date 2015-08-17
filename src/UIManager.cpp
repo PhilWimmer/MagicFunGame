@@ -15,9 +15,9 @@ void UIManager::setTerrain(sf::Sprite t)
 	//terrain.setOrigin(0, terrain.getLocalBounds().height);
 }
 
-void UIManager::setUnits(sf::Sprite t)
+void UIManager::setUnits(std::vector<DrawableUnit> v)
 {
-	units = t;
+	units = v;
 	//scale = t.getScale().x;
 	//units.setScale(scale, -scale);
 	//units.setOrigin(0, units.getLocalBounds().height);
@@ -44,19 +44,22 @@ sf::Sprite* UIManager::getUI()
 	return &terrain;
 }
 
-sf::Sprite* UIManager::getUnits()
-{
-	units.setPosition(x, y);
-	units.setScale(scale, -scale);
-	units.setOrigin(0, units.getLocalBounds().height);
-	return &units;
-
-}
 
 void UIManager::drawEverything(sf::RenderWindow* window)
 {
 	window->draw(*getUI());
+	drawUnits(window);
 	//window->draw(getUnits());
+}
+
+void UIManager::drawUnits(sf::RenderWindow* window)
+{
+	for each (DrawableUnit du in units)
+	{
+		sf::Sprite s = *du.sprite;
+		s.setPosition((du.x * 128)+x, (du.y * 128)+y);
+		window->draw(s);
+	}
 }
 
 UIManager::~UIManager()

@@ -8,6 +8,7 @@
 #include <string>
 #include "block.h"
 #include "Unit.h"
+#include "drawableUnit.h"
 
 class lvlManager
 {

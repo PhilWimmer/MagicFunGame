@@ -16,11 +16,11 @@ Player::Player(TextureManager* texMng, sf::Sprite s,int AP, int HP, int xPos, in
 Player::~Player() {}
 
 bool Player::move(int newX, int newY, lvlManager* lvl) {
-	lvl->map[y][x].pawn = NULL;
+	lvl->map[x][y].pawn = NULL;
 	x = newX;
 	y = newY;
 
-	lvl->map[y][x].pawn = playerUnit;
+	lvl->map[x][y].pawn = playerUnit;
 	//std::cout << x << std::endl;
 	return false;
 }
