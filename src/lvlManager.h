@@ -17,16 +17,11 @@ public:
 	sf::Texture tex;
 	lvlManager();
 	~lvlManager();
-	void genMap(std::vector<Tile>);
+	void genMap(Block);
 	void genDrawable(sf::Sprite*);
-<<<<<<< HEAD
 	bool lvlManager::isAccessible(int, int);
-	std::vector<Tile> generateTiles(std::string, TextureManager*);
-=======
 	Block generateTiles(std::string, TextureManager*);
->>>>>>> a8c1b65b19b37184793d69bdd12fa43e92c9017e
 	void testTileGen(TextureManager*, sf::RenderWindow*);
-private:
 	std::string buildKey(TextureManager*);
 
 };

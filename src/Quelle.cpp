@@ -52,7 +52,8 @@ int main() {
 	texMng.createTextures();
 
 	lvlManager lvl = lvlManager();
-	lvl.genMap(&texMng);
+	Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
+	lvl.genMap(b);
 
 	//Unit test_unit(10, 10, *sprite);
 	//Tile test(sprite, &test_unit);
@@ -109,13 +110,13 @@ int main() {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			uimanager.x -= 1;
 		if (sf::Mouse::getPosition(window).x < 20)
-			uimanager.x -= 1;
-		if (sf::Mouse::getPosition(window).x > 1900)
 			uimanager.x += 1;
+		if (sf::Mouse::getPosition(window).x > 1900)
+			uimanager.x -= 1;
 		if (sf::Mouse::getPosition(window).y < 20)
-			uimanager.y -= 1;
-		if (sf::Mouse::getPosition(window).y > 1060)
 			uimanager.y += 1;
+		if (sf::Mouse::getPosition(window).y > 1060)
+			uimanager.y -= 1;
 
 		
 		window.clear();

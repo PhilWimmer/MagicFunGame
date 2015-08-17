@@ -23,7 +23,7 @@ std::string lvlManager::buildKey(TextureManager* texMng){
 	return key;
 }
 
-void lvlManager::genMap(std::vector<Tile> tiles){
+void lvlManager::genMap(Block tiles){
 	/*for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
 			std::string name = buildKey(texMng);
@@ -32,9 +32,10 @@ void lvlManager::genMap(std::vector<Tile> tiles){
 	}*/
 
 	int count = 0;
-	for (int j = 0; j <  blockwidth; j++){
-		for (int i = 0; i < blockheight; i++){
-			map[i][j] = tiles[count];
+	for (int j = 0; j <  tiles.y; j++){
+		for (int i = 0; i < tiles.x; i++){
+			map[i][j] = tiles.tiles[count];
+			count++;
 		}
 	}
 }
@@ -55,7 +56,7 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			//Leere Tiles auf inaccessible setzten und blocked textur verwenden
 			if (map[i][j].sprite.getTexture() == NULL){
 				sf::Texture tex = sf::Texture();
-				tex.loadFromFile("Sprites/TileBlocked.png");
+				tex.loadFromFile("Sprites/Walls/blocked_1_1.png");
 				map[i][j].sprite.setTexture(tex);
 				renderSprite.setTexture(tex);
 				texture.draw(renderSprite);
@@ -65,7 +66,7 @@ void lvlManager::genDrawable(sf::Sprite* output){
 	}
 	sf::Sprite renderSprite = sf::Sprite();
 	sf::Texture testTex = sf::Texture();
-	testTex.loadFromFile("Sprites/EnemyChar.png");
+	testTex.loadFromFile("Sprites/Units/EnemyChar.png");
 	renderSprite.setTexture(testTex);
 	renderSprite.setPosition(0, 128);
 	texture.draw(renderSprite);
