@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 #include "block.h"
-
+#include "Unit.h"
 
 class lvlManager
 {
@@ -16,6 +16,7 @@ public:
 	sf::Sprite output;
 	sf::Texture tex;
 	sf::Texture unitTex;
+	sf::Sprite unitRenderSprite;
 	sf::RenderTexture unitRenderTex;
 	lvlManager();
 	~lvlManager();
@@ -25,8 +26,8 @@ public:
 	Block generateTiles(std::string, TextureManager*);
 	void testTileGen(TextureManager*, sf::RenderWindow*);
 	std::string buildKey(TextureManager*);
+	void spawnPlayer(Unit*);
 	sf::Vector2<int> findNextSpot(int, int);
 	void drawUnits(sf::Sprite*);
-
 };
 
