@@ -53,7 +53,12 @@ int main() {
 
 	lvlManager lvl = lvlManager();
 	Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
-	lvl.genMap(b);
+	lvl.genMap(b, 0, 0);
+	for (int i = 0; i < 10; i++){
+		Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
+		sf::Vector2<int> v = lvl.findNextSpot(b.x, b.y);
+		lvl.genMap(b, v.x, v.y);
+	}
 
 	//Unit test_unit(10, 10, *sprite);
 	//Tile test(sprite, &test_unit);
