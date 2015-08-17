@@ -77,8 +77,8 @@ int main() {
 				window.close();
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				mousex = sf::Mouse::getPosition().x;
-				mousey = sf::Mouse::getPosition().y;
+				mousex = sf::Mouse::getPosition(window).x;
+				mousey = sf::Mouse::getPosition(window).y;
 
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && event.type == sf::Event::MouseMoved)
@@ -88,6 +88,11 @@ int main() {
 				mousex = event.mouseMove.x;
 				mousey = event.mouseMove.y;
 			}
+			if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Button::Right)
+			{
+				std::cout << "clicked at " << sf::Mouse::getPosition(window).x-uimanager.x << " " << sf::Mouse::getPosition(window).y-uimanager.y << std::endl;
+
+			}
 			/* Zooming - Experimental
 			if (event.type == sf::Event::MouseWheelScrolled)
 			{
@@ -96,20 +101,20 @@ int main() {
 		}
 		//UI Movement
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			uimanager.y -= 1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			uimanager.y += 1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			uimanager.x -= 1;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			uimanager.x += 1;
-		if (sf::Mouse::getPosition().x < 20)
-			uimanager.x -= 1;
-		if (sf::Mouse::getPosition().x > 1900)
-			uimanager.x += 1;
-		if (sf::Mouse::getPosition().y < 20)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			uimanager.y -= 1;
-		if (sf::Mouse::getPosition().y > 1060)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			uimanager.x += 1;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			uimanager.x -= 1;
+		if (sf::Mouse::getPosition(window).x < 20)
+			uimanager.x -= 1;
+		if (sf::Mouse::getPosition(window).x > 1900)
+			uimanager.x += 1;
+		if (sf::Mouse::getPosition(window).y < 20)
+			uimanager.y -= 1;
+		if (sf::Mouse::getPosition(window).y > 1060)
 			uimanager.y += 1;
 
 		
