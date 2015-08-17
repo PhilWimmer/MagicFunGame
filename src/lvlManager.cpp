@@ -7,6 +7,7 @@
 lvlManager::lvlManager()
 {
 	srand(time(NULL));
+	unitRenderTex.create(3840, 3840);
 }
 
 lvlManager::~lvlManager()
@@ -29,18 +30,12 @@ std::string lvlManager::buildKey(TextureManager* texMng){
 	return key;
 }
 
-void lvlManager::genMap(Block tiles){
-	/*for (int i = 0; i < 30; i++){
-		for (int j = 0; j < 30; j++){
-			std::string name = buildKey(texMng);
-			map[i][j].sprite.setTexture(texMng->textureTable.at(name));
-		}
-	}*/
-
+void lvlManager::genMap(Block tiles, int x, int y){
 	int count = 0;
-	for (int j = 0; j <  tiles.x; j++){
-		for (int i = 0; i < tiles.y; i++){
+	for (int j = x; j <  x+tiles.x; j++){
+		for (int i = y; i < y+tiles.y; i++){
 			map[j][i] = tiles.tiles[count];
+			map[j][i].accessible = true;
 			count++;
 		}
 	}
@@ -54,12 +49,11 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			sf::Sprite renderSprite = (map[i][j].sprite);
 			renderSprite.setPosition(i * 128, j * 128);
 			texture.draw(renderSprite);
-			map[i][j].accessible = true;
 			//CharTexture prüfen/renderen
-			if (map[i][j].pawn != NULL){
+			/*if (map[i][j].pawn != NULL){
 				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
 				texture.draw(renderSprite);
-			}
+			}*/
 			//Leere Tiles auf inaccessible setzten und blocked textur verwenden
 			if (map[i][j].sprite.getTexture() == NULL){
 				sf::Texture tex = sf::Texture();
@@ -71,12 +65,6 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			}
 		}
 	}
-	sf::Sprite renderSprite = sf::Sprite();
-	//sf::Texture testTex = sf::Texture();
-	//testTex.loadFromFile("Sprites/Units/EnemyChar.png");
-	//renderSprite.setTexture(testTex);
-	//renderSprite.setPosition(0, 128);
-	texture.draw(renderSprite);
 	tex = texture.getTexture();
 	(*output).setTexture(tex);
 }
@@ -147,5 +135,53 @@ bool lvlManager::isAccessible(int x, int y){
 		return false;
 	}
 	return map[x / 128][y / 128].accessible;
+}
+
+sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
+	bool valid;
+	int x, y;
+	do{
+		bool outAccessible = false;
+		x = rand() % (28-w) +1;
+		y = rand() % (28-h) +1;
+		std::cout << "x y " << x << " " << y << std::endl;
+		valid = true;
+		for (int i = x - 1; i < x + w + 1; i++){
+			for (int j = y - 1; j < y + h + 1; j++){
+				if (i < x || i >= x + w || j < y || j >= y + h){
+					if (map[i][j].accessible == true){
+						outAccessible = true;
+						std::cout << "i j " << i << " " << j << std::endl;
+					}		
+				}
+				else{
+					if (map[i][j].accessible == true)
+						valid = false;
+				}
+			}
+		}
+		std::cout << "vo " << valid << " " << outAccessible << std::endl;
+		if (!outAccessible)
+			valid = false;
+	} while (!valid);
+	sf::Vector2<int> ret = sf::Vector2<int>(x, y);
+	return ret;
+}
+
+void lvlManager::drawUnits(sf::Sprite* output){
+	unitRenderTex.clear();
+	for (int i = 0; i < 30; i++){
+		for (int j = 0; j < 30; j++){
+			//CharTexture prüfen/renderen
+			if (map[i][j].pawn != NULL){
+				sf::Sprite renderSprite = sf::Sprite();
+				renderSprite.setPosition(i * 128, j * 128);
+				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
+				unitRenderTex.draw(renderSprite);
+			}
+		}
+	}
+	unitTex = unitRenderTex.getTexture();
+	(*output).setTexture(unitTex);
 }
 

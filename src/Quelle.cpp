@@ -54,7 +54,12 @@ int main() {
 
 	lvlManager lvl = lvlManager();
 	Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
-	lvl.genMap(b);
+	lvl.genMap(b, 0, 0);
+	for (int i = 0; i < 10; i++){
+		Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
+		sf::Vector2<int> v = lvl.findNextSpot(b.x, b.y);
+		lvl.genMap(b, v.x, v.y);
+	}
 
 	Player p(&texMng, sf::Sprite());
 	lvl.spawnPlayer(p.playerUnit);
@@ -137,7 +142,11 @@ int main() {
 		// uimanager.setTerrain(output);
 		
 		window.clear();
+		sf::Sprite output2;
+		//lvl.drawUnits(&output);
+		uimanager.setUnits(output2);
 		window.draw(*(uimanager.getUI()));
+		window.draw(*(uimanager.getUnits()));
 		//window.draw(*sprite);
 		//window.draw(output);
 		/*sf::Texture texture;
