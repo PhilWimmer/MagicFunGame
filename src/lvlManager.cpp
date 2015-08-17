@@ -36,6 +36,11 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			sf::Sprite renderSprite = (map[i][j].sprite);
 			renderSprite.setPosition(i * 128, j * 128);
 			texture.draw(renderSprite);
+			//CharTexture prüfen/renderen
+			if (map[i][j].pawn != NULL){
+				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
+				texture.draw(renderSprite);
+			}
 		}
 	}
 	sf::Sprite renderSprite = sf::Sprite();
