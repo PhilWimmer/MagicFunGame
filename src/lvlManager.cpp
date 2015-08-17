@@ -32,9 +32,9 @@ void lvlManager::genMap(Block tiles){
 	}*/
 
 	int count = 0;
-	for (int j = 0; j <  tiles.y; j++){
-		for (int i = 0; i < tiles.x; i++){
-			map[i][j] = tiles.tiles[count];
+	for (int j = 0; j <  tiles.x; j++){
+		for (int i = 0; i < tiles.y; i++){
+			map[j][i] = tiles.tiles[count];
 			count++;
 		}
 	}
