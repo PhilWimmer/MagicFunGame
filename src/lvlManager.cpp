@@ -5,6 +5,7 @@
 
 lvlManager::lvlManager()
 {
+	srand(time(NULL));
 }
 
 lvlManager::~lvlManager()
@@ -23,13 +24,13 @@ std::string lvlManager::buildKey(TextureManager* texMng){
 }
 
 void lvlManager::genMap(std::vector<Tile> tiles){
-	srand(time(NULL));
 	/*for (int i = 0; i < 30; i++){
 		for (int j = 0; j < 30; j++){
 			std::string name = buildKey(texMng);
 			map[i][j].sprite.setTexture(texMng->textureTable.at(name));
 		}
 	}*/
+
 	int count = 0;
 	for (int j = 0; j <  blockwidth; j++){
 		for (int i = 0; i < blockheight; i++){
@@ -70,9 +71,6 @@ void lvlManager::genDrawable(sf::Sprite* output){
 	texture.draw(renderSprite);
 	tex = texture.getTexture();
 	(*output).setTexture(tex);
-<<<<<<< HEAD
-
-=======
 }
 
 
@@ -123,7 +121,6 @@ void lvlManager::testTileGen(TextureManager* texMng, sf::RenderWindow* window_pt
     	window_ptr->display();
     	std::this_thread::sleep_for (std::chrono::seconds(1));
     }
->>>>>>> 76d30595f65e3ecb0c9297c33131e2c7aceaa076
 }
 
 bool lvlManager::isAccessible(int x, int y){
