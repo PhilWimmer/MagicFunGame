@@ -12,8 +12,8 @@ UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng, Player* p) 
 }
 
 bool UnitManager::spawnUnit(UnitType u, int x, int y) {
-	// if ((!(lvl->isAccessible(x, y))) || lvl->map[x][y].pawn != NULL)
-	// 	return false;
+	if (!(lvl->isAccessible(x*128, y*128))) //isAcc uses pixel values
+	 	return false;
 
 	Unit unit;
 
@@ -49,8 +49,9 @@ std::vector<DrawableUnit> UnitManager::getUnits() {
 }
 
 bool UnitManager::movePlayer(int newX, int newY, Player* p) {
+	for(std::vector<Unit>::iterator it = unitList.begin(); it != unitList.end(); ++it) 
+		if (it->x == newX && it->y == newY) return true;
 
-	//lvl->map[playerUnit->x][playerUnit->y].pawn = NULL;	FIX FIX FIX FIX FIX FIX FIX FIX FIX 
 	p->playerUnit->x = newX;
 	p->playerUnit->y = newY;
 	player = p;
