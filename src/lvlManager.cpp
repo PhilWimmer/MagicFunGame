@@ -63,11 +63,11 @@ void lvlManager::genDrawable(sf::Sprite* output){
 					connections += 1;
 				std::cout << "Connections:" << connections << std::endl;
 				char buffer[30];
-				strcpy_s(buffer, "Sprites/Walls/test");
+				strcpy(buffer, "Sprites/Walls/test");
 				char buffer2[3];
-				_itoa_s(connections, buffer2, 10);
-				strcat_s(buffer, 30, buffer2);
-				strcat_s(buffer, 30, ".png");
+				_itoa(connections, buffer2, 10);
+				strcat(buffer, buffer2);
+				strcat(buffer, ".png");
 				tex.loadFromFile(buffer);
 				map[i][j].sprite.setTexture(tex);
 				renderSprite.setTexture(tex);
