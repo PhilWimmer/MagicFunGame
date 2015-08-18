@@ -15,7 +15,7 @@ lvlManager::~lvlManager()
 }
 
 void lvlManager::spawnPlayer(Unit* player) {
-	map[0][0].pawn = player;
+	map[0][15].pawn = player;
 	//std::cout << player->x << std::endl;
 }
 
