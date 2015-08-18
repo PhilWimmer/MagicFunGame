@@ -141,7 +141,7 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 	bool valid;
 	int x, y;
 	do{
-		bool outAccessible = false;
+		int outAccessible = 0;
 		x = rand() % (28-w) +1;
 		y = rand() % (28-h) +1;
 		std::cout << "x y " << x << " " << y << std::endl;
@@ -152,7 +152,7 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 					//std::cout << "hoho-haha" << std::endl;
 				if ((i < x || i >= x + w || j < y || j >= y + h)){
 					if (map[i][j].accessible == true){
-						outAccessible = true;
+						outAccessible++;
 						std::cout << "i j " << i << " " << j << std::endl;
 					}		
 				}
@@ -163,7 +163,7 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 			}
 		}
 		std::cout << "vo " << valid << " " << outAccessible << std::endl;
-		if (!outAccessible)
+		if (outAccessible == 0 || outAccessible >= 3)
 			valid = false;
 	} while (!valid);
 	sf::Vector2<int> ret = sf::Vector2<int>(x, y);
