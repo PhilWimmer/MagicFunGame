@@ -14,7 +14,7 @@ bool UnitManager::spawnUnit(UnitType u, int x, int y) {
 
 	Unit unit;
 
-	switch(u) {
+	switch(u) {	
 		case standard:
 			break;
 		case doge:	//(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int yPos, UnitType u)
@@ -27,7 +27,8 @@ bool UnitManager::spawnUnit(UnitType u, int x, int y) {
 
 	unitList.push_back(unit);
 
-	lvl->map[x][y].pawn = &unit;
+	//lvl->map[x][y].pawn = &unit;
+	lvl->map[x][y].pawn = &unitList[unitList.size()];
 
 	return true; //rm
 }
