@@ -8,9 +8,7 @@
 Player::Player(TextureManager* texMng, sf::Sprite s,int AP, int HP, int xPos, int yPos){
 	sf::Sprite sprite;
 	sprite.setTexture(texMng->textureTable.at("corgi"));
-	playerUnit = (new Unit(AP, HP, sprite, xPos, yPos));
-	//x = xPos;
-	//y = yPos;
+	playerUnit = (new Unit(AP, HP, sprite, texMng, xPos, yPos));
 } 
 
 Player::~Player() {}
