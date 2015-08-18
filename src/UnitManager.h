@@ -6,6 +6,7 @@
 #include <vector>
 #include "player.h"
 #include "DrawableUnit.h"
+#include <SFML/Audio.hpp>
 
 class UnitManager {
 public:
@@ -16,6 +17,10 @@ public:
 	std::vector<Unit> unitList;
 	Player* player;
 	bool movePlayer(int, int, Player*);
+	void playerAttack(Unit*);
+	void isDead(int);
+	sf::SoundBuffer dieBuffer;
+	sf::Sound die;
 private:
 	lvlManager* lvl = NULL;
 	TextureManager* tex = NULL;

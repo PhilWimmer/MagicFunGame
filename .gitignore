@@ -9,3 +9,4 @@ makefile
 app
 src/app
 src/Sprites
+src/Sounds
