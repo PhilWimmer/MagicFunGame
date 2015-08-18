@@ -9,6 +9,7 @@
 #include <chrono>
 #include "Player.h"
 #include "UnitManager.h"
+#include "AnimatedSprite.hpp"
 
 void testTextureManager(sf::RenderWindow*);
 
@@ -49,6 +50,24 @@ int main() {
 
 	//testlvlManager
 
+	sf::Texture shibe;
+	if (!shibe.loadFromFile("Sprites/Units/shibe_spread.png"))
+	{
+		std::cout << "Failed to load player spritesheet!" << std::endl;
+		return 1;
+	}
+
+	Animation shibe_idle;
+	shibe_idle.setSpriteSheet(shibe);
+	shibe_idle.addFrame(sf::IntRect(0, 0, 128, 128));
+	shibe_idle.addFrame(sf::IntRect(128, 0, 128, 128));
+	shibe_idle.addFrame(sf::IntRect(256, 0, 128, 128));
+	shibe_idle.addFrame(sf::IntRect(384, 0, 128, 128));
+
+	AnimatedSprite animatedShibe(sf::seconds(0.2), false, true);
+	animatedShibe.setPosition(0,0);
+	animatedShibe.play(shibe_idle);
+
 	TextureManager texMng;
 	texMng.getFiles();
 	texMng.createTextures();
@@ -84,6 +103,7 @@ int main() {
 	std::cout << p.playerUnit->x + 1 <<  p.playerUnit->y + 1 << std::endl;
 
 
+	sf::Clock frameClock;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -147,6 +167,10 @@ int main() {
 		// UIManager uimanager;
 		// uimanager.setTerrain(output);
 		
+		sf::Time frameTime = frameClock.restart();
+
+		animatedShibe.update(frameTime);
+
 		window.clear();
 		//sf::Sprite output2;
 		//lvl.drawUnits(&output);
@@ -155,6 +179,7 @@ int main() {
 		//window.draw(*(uimanager.getUnits()));
 		uimanager.setUnits(uM.getUnits());
 		uimanager.drawEverything(&window);
+		window.draw(animatedShibe);
 		//window.draw(*sprite);
 		//window.draw(output);
 		/*sf::Texture texture;
