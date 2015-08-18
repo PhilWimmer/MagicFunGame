@@ -134,6 +134,7 @@ bool lvlManager::isAccessible(int x, int y){
 	if (x < 0 || y < 0 || x > 3840 || y > 3840){
 		return false;
 	}
+	if (map[x/128][y/128].pawn != NULL) return false;
 	return map[x / 128][y / 128].accessible;
 }
 

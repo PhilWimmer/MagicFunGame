@@ -18,7 +18,7 @@ Unit::Unit(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int 
 			break;
 
 		case doge:
-			sp.setTexture(texMng->textureTable.at("doge"));
+			sp.setTexture(texMng->textureTable.at("shibe"));
 			break;
 
 		case turtle:
