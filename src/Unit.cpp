@@ -34,6 +34,16 @@ Unit::Unit(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int 
 	type = u;
 }
 
+Unit::Unit() {
+	maxAP = 10;
+	currAP = 10;
+	maxHP = 15;
+	currHP = 15;
+	x = 29; 
+	y = 29;
+	type = standard;
+	sprite = sf::Sprite();
+}
 
 Unit::~Unit()
 {

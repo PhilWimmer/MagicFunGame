@@ -16,6 +16,7 @@ public:
 	UnitType type;
 	sf::Sprite sprite;
 	Unit(int, int, sf::Sprite, TextureManager*, int xPos = 29, int yPos = 29, UnitType u = standard);
+	Unit();
 	~Unit();
 };
 
