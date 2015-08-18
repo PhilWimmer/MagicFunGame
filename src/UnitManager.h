@@ -6,11 +6,12 @@
 #include <vector>
 #include "player.h"
 #include "DrawableUnit.h"
+#include "SoundManager.h"
 #include <SFML/Audio.hpp>
 
 class UnitManager {
 public:
-	UnitManager(lvlManager*, TextureManager*, Player*);
+	UnitManager(lvlManager*, TextureManager*, Player*, SoundManager*);
 	~UnitManager();
 	bool spawnUnit(UnitType, int, int);
 	std::vector<DrawableUnit> getUnits();
@@ -24,4 +25,5 @@ public:
 private:
 	lvlManager* lvl = NULL;
 	TextureManager* tex = NULL;
+	SoundManager* snd = NULL;
 };

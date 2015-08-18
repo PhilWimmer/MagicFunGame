@@ -27,6 +27,8 @@ void SoundManager::getFiles() {
 		closedir(curDir);
 	} else 
 		std::cout << "WARNING: Could not get Directory \"Sounds\" " << std::endl;
+
+	hasLoaded = true;
 }
 
 void SoundManager::createSounds() {

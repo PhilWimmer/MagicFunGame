@@ -12,6 +12,6 @@ public:
 	Unit* playerUnit = NULL;
 	sf::Sound bark;
 	sf::SoundBuffer barkBuffer;
-	Player(TextureManager* texMng, sf::Sprite s,int AP = 10, int HP = 30, int xPos = 0, int yPos = 15);
+	Player(TextureManager* texMng, sf::SoundBuffer*, sf::Sprite s,int AP = 10, int HP = 30, int xPos = 0, int yPos = 15);
 	~Player();
 };

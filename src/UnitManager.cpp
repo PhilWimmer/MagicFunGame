@@ -1,17 +1,19 @@
+#pragma once
 #include "UnitManager.h"
 #include <vector>
 #include "Unit.h"
 #include <iostream>
 
-UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng, Player* p) {
+UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng, Player* p, SoundManager* s) {
 	unitList = std::vector<Unit>();
 	lvl = lvlMng;
 	tex = texMng;
 	player = p;
 	unitList.push_back(*(player->playerUnit));
- 	dieBuffer = sf::SoundBuffer();
+	snd = s;
+
+ 	dieBuffer = s->soundTable.at("die");
 	die = sf::Sound();
-	dieBuffer.loadFromFile("Sounds/die.ogg");
 	die = sf::Sound(dieBuffer);
 	die.setVolume(100);
 }
