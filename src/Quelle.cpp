@@ -75,10 +75,11 @@ int main() {
 	lvlManager lvl;
 	Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
 	lvl.genMap(b, 0, 15);
-	for (int i = 0; i < 20; i++){
+	for (int i = 0; i < 50; i++){
 		Block b = lvl.generateTiles(lvl.buildKey(&texMng), &texMng);
 		sf::Vector2<int> v = lvl.findNextSpot(b.x, b.y);
-		lvl.genMap(b, v.x, v.y);
+		if (v.x != -1)
+			lvl.genMap(b, v.x, v.y);
 	}
 
 	Player p(&texMng, sf::Sprite());
@@ -98,7 +99,7 @@ int main() {
 
 	UnitManager uM(&lvl, &texMng, &p);
 	uM.spawnUnit(doge, p.playerUnit->x + 1, p.playerUnit->y);
-	uM.spawnUnit(doge, p.playerUnit->x, p.playerUnit->y + 1);
+	uM.spawnUnit(turtle, p.playerUnit->x, p.playerUnit->y + 1);
 	std::cout << p.playerUnit->x + 1 <<  p.playerUnit->y + 1 << std::endl;
 
 

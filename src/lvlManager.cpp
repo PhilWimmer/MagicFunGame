@@ -135,7 +135,10 @@ bool lvlManager::isAccessible(int x, int y){
 sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 	bool valid;
 	int x, y;
+	int tries = 0;
 	do{
+		if (tries > 50)
+			return sf::Vector2<int>(-1, -1);
 		int outAccessible = 0;
 		x = rand() % (28-w) +1;
 		y = rand() % (28-h) +1;
@@ -158,8 +161,9 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 			}
 		}
 		std::cout << "vo " << valid << " " << outAccessible << std::endl;
-		if (outAccessible == 0 || outAccessible >= 3)
+		if (outAccessible == 0 || outAccessible >= 2)
 			valid = false;
+		tries++;
 	} while (!valid);
 	sf::Vector2<int> ret = sf::Vector2<int>(x, y);
 	return ret;
