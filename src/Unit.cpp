@@ -26,8 +26,8 @@ Unit::Unit(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int 
 			break;
 	}
 
-	//if (sp.getTexture() != NULL)
-	s = sp;
+	if (s.getTexture() == NULL)
+	 	sprite = sp;
 	
 	x = xPos;
 	y = yPos;
