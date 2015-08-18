@@ -73,7 +73,8 @@ void TextureManager::getFiles() {
 	        	units.push_back(name);
 	    }
 		closedir(curDir);
-	}
+	} else 
+		std::cout << "WARNING: Could not get Directory \"Sprites/Units\" " << std::endl;
 
 	curDir = opendir("Sprites/Walls"); 
 	  if (curDir) {
@@ -83,7 +84,8 @@ void TextureManager::getFiles() {
 	        	walls.push_back(name);
 	    }
 		closedir(curDir);
-	}
+	} else 
+		std::cout << "WARNING: Could not get Directory \"Sprites/Walls\" " << std::endl;
 
 	curDir = opendir("Sprites/Floors"); 
 	  if (curDir) {
@@ -93,5 +95,6 @@ void TextureManager::getFiles() {
 	        	floors.push_back(name);
 	    }
 		closedir(curDir);
-	}
+	} else 
+		std::cout << "WARNING: Could not get Directory \"Sprite/Floors\" " << std::endl;
 }
