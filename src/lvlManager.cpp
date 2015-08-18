@@ -65,7 +65,7 @@ void lvlManager::genDrawable(sf::Sprite* output){
 				char buffer[30];
 				strcpy(buffer, "Sprites/Walls/test");
 				char buffer2[3];
-				_itoa(connections, buffer2, 10);
+				sprintf(buffer2, "%d", connections);
 				strcat(buffer, buffer2);
 				strcat(buffer, ".png");
 				tex.loadFromFile(buffer);
