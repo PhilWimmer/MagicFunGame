@@ -78,6 +78,11 @@ int main() {
 
 	//testTextureManager(&window);
 
+	UnitManager uM(&lvl, &texMng);
+	uM.spawnUnit(doge, p.playerUnit->x + 1, p.playerUnit->y);
+	uM.spawnUnit(doge, p.playerUnit->x, p.playerUnit->y + 1);
+	std::cout << p.playerUnit->x + 1 <<  p.playerUnit->y + 1 << std::endl;
+
 
 	while (window.isOpen())
 	{
