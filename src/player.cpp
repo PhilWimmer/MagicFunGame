@@ -3,7 +3,7 @@
 #include "Unit.h"
 #include "textureManager.h"
 #include "lvlManager.h"
-#include "Player.h"
+#include "player.h"
 
 Player::Player(TextureManager* texMng, sf::Sprite s,int AP, int HP, int xPos, int yPos){
 	sf::Sprite sprite;
@@ -13,12 +13,3 @@ Player::Player(TextureManager* texMng, sf::Sprite s,int AP, int HP, int xPos, in
 
 Player::~Player() {}
 
-bool Player::move(int newX, int newY, lvlManager* lvl) {
-	//lvl->map[playerUnit->x][playerUnit->y].pawn = NULL;	FIX FIX FIX FIX FIX FIX FIX FIX FIX 
-	playerUnit->x = newX;
-	playerUnit->y = newY;
-
-	//lvl->map[playerUnit->x][playerUnit->y].pawn = playerUnit;
-	//std::cout << x << std::endl;
-	return false;
-}

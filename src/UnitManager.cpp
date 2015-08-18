@@ -2,6 +2,7 @@
 #include <vector>
 #include "Unit.h"
 
+
 UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng, Player* p) {
 	unitList = std::vector<Unit>();
 	lvl = lvlMng;
@@ -45,6 +46,18 @@ std::vector<DrawableUnit> UnitManager::getUnits() {
     	dUnits.push_back(dU);
     }
     return dUnits;
+}
+
+bool UnitManager::movePlayer(int newX, int newY, Player* p) {
+
+	//lvl->map[playerUnit->x][playerUnit->y].pawn = NULL;	FIX FIX FIX FIX FIX FIX FIX FIX FIX 
+	p->playerUnit->x = newX;
+	p->playerUnit->y = newY;
+	player = p;
+	unitList[0] = *(player->playerUnit);
+	//lvl->map[playerUnit->x][playerUnit->y].pawn = playerUnit;
+	//std::cout << x << std::endl;
+	return true;
 }
 
 

@@ -11,5 +11,4 @@ public:
 	Unit* playerUnit = NULL;
 	Player(TextureManager* texMng, sf::Sprite s,int AP = 10, int HP = 30, int xPos = 0, int yPos = 15);
 	~Player();
-	bool move(int newX, int newY, lvlManager* lvl);
 };

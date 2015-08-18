@@ -111,7 +111,7 @@ int main() {
 				int yPos = sf::Mouse::getPosition(window).y - uimanager.y;
 				//std::cout << lvl.map[xPos / 128][yPos / 128].pawn << std::endl;
 				if (lvl.isAccessible(xPos, yPos)) {
-					p.move(xPos/128, yPos/128, &lvl);
+					uM.movePlayer(xPos/128, yPos/128, &p);
 					std::cout << xPos/128 << yPos/128 << std::endl;
 					
 					std::cout << "great success !" << std::endl;

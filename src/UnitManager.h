@@ -4,7 +4,7 @@
 #include "textureManager.h"
 //#include "unitType.h"
 #include <vector>
-#include "Player.h"
+#include "player.h"
 #include "DrawableUnit.h"
 
 class UnitManager {
@@ -15,6 +15,7 @@ public:
 	std::vector<DrawableUnit> getUnits();
 	std::vector<Unit> unitList;
 	Player* player;
+	bool movePlayer(int, int, Player*);
 private:
 	lvlManager* lvl = NULL;
 	TextureManager* tex = NULL;
