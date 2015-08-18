@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "UnitManager.h"
 #include "AnimatedSprite.hpp"
+#include "SoundManager.h"
 
 void testTextureManager(sf::RenderWindow*);
 
