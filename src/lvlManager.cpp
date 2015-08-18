@@ -148,7 +148,9 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 		valid = true;
 		for (int i = x - 1; i < x + w + 1; i++){
 			for (int j = y - 1; j < y + h + 1; j++){
-				if (i < x || i >= x + w || j < y || j >= y + h){
+				if (!((i == x - 1 || i == x + w) && (j == y - 1 || j == y + h)))
+					//std::cout << "hoho-haha" << std::endl;
+				if ((i < x || i >= x + w || j < y || j >= y + h)){
 					if (map[i][j].accessible == true){
 						outAccessible = true;
 						std::cout << "i j " << i << " " << j << std::endl;
