@@ -52,11 +52,26 @@ void lvlManager::genDrawable(sf::Sprite* output){
 			//Leere Tiles auf inaccessible setzten und blocked textur verwenden
 			if (map[i][j].sprite.getTexture() == NULL){
 				sf::Texture tex = sf::Texture();
-				tex.loadFromFile("Sprites/Walls/blocked_1_1.png");
+				int connections = 0;
+				if (j == 0 || map[i][j - 1].accessible == false)//up
+					connections += 8;
+				if (i == 29 || map[i + 1][j].accessible == false)//right
+					connections += 4;
+				if (j == 29 || map[i][j + 1].accessible == false)//down
+					connections += 2;
+				if (i == 0 || map[i - 1][j].accessible == false)//left
+					connections += 1;
+				std::cout << "Connections:" << connections << std::endl;
+				char buffer[30];
+				strcpy_s(buffer, "Sprites/Walls/test");
+				char buffer2[3];
+				_itoa_s(connections, buffer2, 10);
+				strcat_s(buffer, 30, buffer2);
+				strcat_s(buffer, 30, ".png");
+				tex.loadFromFile(buffer);
 				map[i][j].sprite.setTexture(tex);
 				renderSprite.setTexture(tex);
 				texture.draw(renderSprite);
-				map[i][j].accessible = false;
 			}
 		}
 	}
