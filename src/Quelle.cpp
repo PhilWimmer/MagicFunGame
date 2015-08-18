@@ -63,7 +63,6 @@ int main() {
 	}
 
 	Player p(&texMng, sf::Sprite());
-	lvl.spawnPlayer(p.playerUnit);
 
 	//Unit test_unit(10, 10, *sprite);
 	//Tile test(sprite, &test_unit);
@@ -78,7 +77,7 @@ int main() {
 
 	//testTextureManager(&window);
 
-	UnitManager uM(&lvl, &texMng);
+	UnitManager uM(&lvl, &texMng, &p);
 	uM.spawnUnit(doge, p.playerUnit->x + 1, p.playerUnit->y);
 	uM.spawnUnit(doge, p.playerUnit->x, p.playerUnit->y + 1);
 	std::cout << p.playerUnit->x + 1 <<  p.playerUnit->y + 1 << std::endl;
@@ -110,7 +109,7 @@ int main() {
 				//std::cout << "is accessible: " << lvl.isAccessible(sf::Mouse::getPosition(window).x - uimanager.x, sf::Mouse::getPosition(window).y - uimanager.y) << std::endl;
 				int xPos = sf::Mouse::getPosition(window).x - uimanager.x;
 				int yPos = sf::Mouse::getPosition(window).y - uimanager.y;
-				std::cout << lvl.map[xPos / 128][yPos / 128].pawn << std::endl;
+				//std::cout << lvl.map[xPos / 128][yPos / 128].pawn << std::endl;
 				if (lvl.isAccessible(xPos, yPos)) {
 					p.move(xPos/128, yPos/128, &lvl);
 					std::cout << xPos/128 << yPos/128 << std::endl;
@@ -153,7 +152,7 @@ int main() {
 		//uimanager.setUnits(output2);
 		//window.draw(*(uimanager.getUI()));
 		//window.draw(*(uimanager.getUnits()));
-		uimanager.setUnits(lvl.drawUnits());
+		uimanager.setUnits(uM.getUnits());
 		uimanager.drawEverything(&window);
 		//window.draw(*sprite);
 		//window.draw(output);

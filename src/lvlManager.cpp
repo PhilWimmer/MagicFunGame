@@ -14,11 +14,6 @@ lvlManager::~lvlManager()
 {
 }
 
-void lvlManager::spawnPlayer(Unit* player) {
-	map[0][15].pawn = player;
-	//std::cout << player->x << std::endl;
-}
-
 std::string lvlManager::buildKey(TextureManager* texMng){
 	std::string key;
 	int length = texMng->floors.size();
@@ -134,7 +129,6 @@ bool lvlManager::isAccessible(int x, int y){
 	if (x < 0 || y < 0 || x > 3840 || y > 3840){
 		return false;
 	}
-	if (map[x/128][y/128].pawn != NULL) return false;
 	return map[x / 128][y / 128].accessible;
 }
 
@@ -171,21 +165,4 @@ sf::Vector2<int> lvlManager::findNextSpot(int w, int h){
 	return ret;
 }
 
-std::vector<DrawableUnit> lvlManager::drawUnits(){
-	std::vector<DrawableUnit> units;
-	for (int i = 0; i < 30; i++){
-		for (int j = 0; j < 30; j++){
-			//CharTexture prüfen
-			if (map[i][j].pawn != NULL){
-				/*sf::Sprite renderSprite = sf::Sprite();
-				renderSprite.setPosition(i * 128, j * 128);
-				renderSprite.setTexture(*(map[i][j].pawn->sprite.getTexture()));
-				unitRenderTex.draw(renderSprite);*/
-				struct DrawableUnit u = { i, j, &(map[i][j].pawn->sprite) };
-				units.push_back(u);
-			}
-		}
-	}
-	return units;
-}
 

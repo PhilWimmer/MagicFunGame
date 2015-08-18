@@ -27,8 +27,6 @@ public:
 	Block generateTiles(std::string, TextureManager*);
 	void testTileGen(TextureManager*, sf::RenderWindow*);
 	std::string buildKey(TextureManager*);
-	void spawnPlayer(Unit*);
 	sf::Vector2<int> findNextSpot(int, int);
-	std::vector<DrawableUnit> drawUnits();
 };
 

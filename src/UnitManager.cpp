@@ -2,10 +2,12 @@
 #include <vector>
 #include "Unit.h"
 
-UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng) {
+UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng, Player* p) {
 	unitList = std::vector<Unit>();
 	lvl = lvlMng;
 	tex = texMng;
+	player = p;
+	unitList.push_back(*(player->playerUnit));
 }
 
 bool UnitManager::spawnUnit(UnitType u, int x, int y) {
@@ -27,12 +29,22 @@ bool UnitManager::spawnUnit(UnitType u, int x, int y) {
 
 	unitList.push_back(unit);
 
-	//lvl->map[x][y].pawn = &unit;
-	lvl->map[x][y].pawn = &unitList[unitList.size()];
-
 	return true; //rm
 }
 
 UnitManager::~UnitManager() {
 	
 }
+
+	
+std::vector<DrawableUnit> UnitManager::getUnits() {
+	std::vector<DrawableUnit> dUnits;
+	for(std::vector<Unit>::iterator it = unitList.begin(); it != unitList.end(); ++it) {
+    	sf::Sprite* sprtPtr = &(it->sprite);
+    	DrawableUnit dU = {it->x, it->y, sprtPtr};
+    	dUnits.push_back(dU);
+    }
+    return dUnits;
+}
+
+
