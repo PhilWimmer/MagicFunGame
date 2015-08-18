@@ -8,6 +8,7 @@
 #include <thread>         
 #include <chrono>
 #include "Player.h"
+#include "UnitManager.h"
 
 void testTextureManager(sf::RenderWindow*);
 
