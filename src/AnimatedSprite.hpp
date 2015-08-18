@@ -29,6 +29,8 @@
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <cmath>
+#include <cstdlib>
 
 #include "Animation.hpp"
 

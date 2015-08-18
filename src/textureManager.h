@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <sys/types.h>
+#include <dirent.h>
 
 class TextureManager {
 public:

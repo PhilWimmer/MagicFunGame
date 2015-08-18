@@ -82,7 +82,11 @@ int main() {
 			lvl.genMap(b, v.x, v.y);
 	}
 
-	Player p(&texMng, sf::Sprite());
+	SoundManager sM;
+	sM.getFiles();
+	sM.createSounds();
+
+	Player p(&texMng, &(sM.soundTable.at("bark")), sf::Sprite());
 
 	//Unit test_unit(10, 10, *sprite);
 	//Tile test(sprite, &test_unit);
@@ -97,11 +101,12 @@ int main() {
 
 	//testTextureManager(&window);
 
-	UnitManager uM(&lvl, &texMng, &p);
+	UnitManager uM(&lvl, &texMng, &p, &sM);
 	uM.spawnUnit(doge, p.playerUnit->x + 1, p.playerUnit->y);
 	uM.spawnUnit(turtle, p.playerUnit->x, p.playerUnit->y + 1);
 	std::cout << p.playerUnit->x + 1 <<  p.playerUnit->y + 1 << std::endl;
 
+	
 
 	sf::Clock frameClock;
 	while (window.isOpen())
