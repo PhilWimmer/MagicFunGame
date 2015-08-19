@@ -60,8 +60,10 @@ bool UnitManager::movePlayer(int newX, int newY, Player* p) {
 	for (int i = 0; i < unitList.size(); i++) {
 		//if (it->x == newX && it->y == newY) {
 		if (unitList[i].x == newX && unitList[i].y == newY) {
-			playerAttack(&(unitList[i]));
-			isDead(i);
+			if (newX != p->playerUnit->x && newY != p->playerUnit->y) {
+				playerAttack(&(unitList[i]));
+				isDead(i);
+			}
 			return false;
 		}
 	}
