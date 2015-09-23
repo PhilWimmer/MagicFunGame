@@ -1,6 +1,6 @@
 #pragma once
 #include "Unit.h"
-
+// unit with highest ratio of max to current AP, if same, moves are simultaneously.
 Unit::Unit(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int yPos, UnitType u)
 {
 	maxAP = mAP;
@@ -32,11 +32,12 @@ Unit::Unit(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int 
 	x = xPos;
 	y = yPos;
 	type = u;
+	actionQ = std::queue<std::string>();
 }
 
 Unit::Unit() {
 	maxAP = 10;
-	currAP = 10;
+	currAP = 8; //! should be 10, for test purposes
 	maxHP = 15;
 	currHP = 15;
 	x = 29; 

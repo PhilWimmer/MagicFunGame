@@ -20,6 +20,7 @@ public:
 	bool movePlayer(int, int, Player*);
 	void playerAttack(Unit*);
 	void isDead(int);
+	void gatherActions();
 	sf::SoundBuffer dieBuffer;
 	sf::Sound die;
 private:

@@ -3,6 +3,7 @@
 #include <vector>
 #include "Unit.h"
 #include <iostream>
+#include "ActionUnit.h"
 
 UnitManager::UnitManager(lvlManager* lvlMng, TextureManager* texMng, Player* p, SoundManager* s) {
 	unitList = std::vector<Unit>();
@@ -60,10 +61,10 @@ bool UnitManager::movePlayer(int newX, int newY, Player* p) {
 	for (int i = 0; i < unitList.size(); i++) {
 		//if (it->x == newX && it->y == newY) {
 		if (unitList[i].x == newX && unitList[i].y == newY) {
-			if (newX != p->playerUnit->x && newY != p->playerUnit->y) {
+			//if (newX != p->playerUnit->x && newY != p->playerUnit->y) {
 				playerAttack(&(unitList[i]));
 				isDead(i);
-			}
+			//}
 			return false;
 		}
 	}
@@ -91,4 +92,18 @@ void UnitManager::playerAttack(Unit* enemy) {
 	std::cout << enemy->currHP << std::endl;
 }
 
+void UnitManager::gatherActions() {
+	std::vector<ActionUnit> sortedUnits;
+
+	for (std::vector<Unit>::iterator it = unitList.begin(); it != unitList.end(); ++it) {
+		ActionUnit temp = {((double)it->maxAP / (double)it->currAP), &(*it)};
+		sortedUnits.push_back(temp);
+	}
+
+	std::cout << sortedUnits[1].apRatio << std::endl;
+
+	// sortedUnits.insert(it, &unitList[0]);
+	// sortedUnits.push_back(&unitList[0]);
+	// std::cout << sortedUnits[0]->maxAP << std::endl;
+}
 

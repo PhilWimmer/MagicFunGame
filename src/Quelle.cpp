@@ -105,8 +105,7 @@ int main() {
 	uM.spawnUnit(doge, p.playerUnit->x + 1, p.playerUnit->y);
 	uM.spawnUnit(turtle, p.playerUnit->x, p.playerUnit->y + 1);
 	std::cout << p.playerUnit->x + 1 <<  p.playerUnit->y + 1 << std::endl;
-
-	
+	uM.gatherActions();
 
 	sf::Clock frameClock;
 	while (window.isOpen())
