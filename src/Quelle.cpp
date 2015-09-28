@@ -128,6 +128,10 @@ int main() {
 				mousex = event.mouseMove.x;
 				mousey = event.mouseMove.y;
 			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
+			{
+				uM.gatherActions();
+			}
 			if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Button::Right)
 			{
 				std::cout << "clicked at " << sf::Mouse::getPosition(window).x-uimanager.x << " " << sf::Mouse::getPosition(window).y-uimanager.y << std::endl;

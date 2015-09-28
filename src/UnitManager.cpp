@@ -72,6 +72,7 @@ bool UnitManager::movePlayer(int newX, int newY, Player* p) {
 	p->playerUnit->y = newY;
 	player = p;
 	unitList[0] = *(player->playerUnit);
+	p->playerUnit->currAP -= 1;
 	//lvl->map[playerUnit->x][playerUnit->y].pawn = playerUnit;
 	//std::cout << x << std::endl;
 	return true;
@@ -98,9 +99,10 @@ void UnitManager::gatherActions() {
 	for (std::vector<Unit>::iterator it = unitList.begin(); it != unitList.end(); ++it) {
 		ActionUnit temp = {((double)it->maxAP / (double)it->currAP), &(*it)};
 		sortedUnits.push_back(temp);
+		std::cout << temp.apRatio << std::endl;
 	}
 
-	std::cout << sortedUnits[1].apRatio << std::endl;
+	//std::cout << sortedUnits[1].apRatio << std::endl;
 
 	// sortedUnits.insert(it, &unitList[0]);
 	// sortedUnits.push_back(&unitList[0]);
