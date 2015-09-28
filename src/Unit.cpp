@@ -37,7 +37,7 @@ Unit::Unit(int mAP, int mHP, sf::Sprite s, TextureManager* texMng,int xPos, int 
 
 Unit::Unit() {
 	maxAP = 10;
-	currAP = 8; //! should be 10, for test purposes
+	currAP = 10; //! should be 10, for test purposes
 	maxHP = 15;
 	currHP = 15;
 	x = 29; 

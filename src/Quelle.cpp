@@ -38,7 +38,7 @@ void testTextureManager(sf::RenderWindow* window_ptr) {
 } 
 
 int main() {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Test");
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Corgi Movement Simulator");
 	/*sf::CircleShape shape(100.f); 
 	shape.setFillColor(sf::Color::Green);*/
 
@@ -193,6 +193,7 @@ int main() {
 		(*sprite).setColor(sf::Color(128, 128, 128));
 		sprite.setTexture(texture);*/
 		//window.draw(*sprite);
+		//std::cout << "Current player AP: " << p.playerUnit->currAP << ". Max player AP: " << p.playerUnit->maxAP << "." << std::endl;
 		window.display();
 	}
 
