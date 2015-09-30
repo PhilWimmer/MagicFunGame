@@ -56,7 +56,10 @@ std::vector<DrawableUnit> UnitManager::getUnits() {
     return dUnits;
 }
 
-bool UnitManager::movePlayer(int newX, int newY, Player* p) {
+//previously movePlayer(), now general interaction with tile.
+//if tile is emtpy, default behaviour is to move. All other interactions, i.e. with items
+//or enemies should probably be handled here
+bool UnitManager::interact(int newX, int newY, Player* p) {
 	//for (std::vector<Unit>::iterator it = unitList.begin(); it != unitList.end(); ++it) 
 	for (int i = 0; i < unitList.size(); i++) {
 		//if (it->x == newX && it->y == newY) {

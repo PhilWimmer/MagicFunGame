@@ -17,7 +17,7 @@ public:
 	std::vector<DrawableUnit> getUnits();
 	std::vector<Unit> unitList;
 	Player* player;
-	bool movePlayer(int, int, Player*);
+	bool interact(int, int, Player*);
 	void playerAttack(Unit*);
 	void isDead(int);
 	void gatherActions();
